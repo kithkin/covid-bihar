@@ -1,7 +1,9 @@
 <template>
     <div class="homepage">
-        <main-card></main-card>
-        <table-card></table-card>
+        <v-container fluid>
+            <main-card></main-card>
+            <table-card></table-card>
+        </v-container>
     </div>
 </template>
 
