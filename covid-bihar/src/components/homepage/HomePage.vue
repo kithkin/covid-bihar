@@ -8,12 +8,16 @@
                             <main-card></main-card>
                         </v-col>
                     </v-row>
+                    <v-row>
+                        <v-col sm="12">
+                            <table-card></table-card>
+                        </v-col>
+                    </v-row>
                 </v-col>
                 <v-col cols="12" sm="3" md="3">
 
                 </v-col>
             </v-row>
-            <table-card></table-card>
         </v-container>
     </div>
 </template>
