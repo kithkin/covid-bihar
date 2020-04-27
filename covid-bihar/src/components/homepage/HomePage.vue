@@ -1,15 +1,19 @@
 <template>
     <div class="homepage">
-        <table-card />
+        <main-card></main-card>
+        <table-card></table-card>
     </div>
 </template>
 
 <script>
-import TableCard from './components/TableCard'
+import MainCard from './components/MainCard.vue'
+import TableCard from './components/TableCard.vue'
+
 export default {
     name: 'HomePage',
     components: {
-        TableCard
+        TableCard,
+        MainCard
     },
     data() {
         return {
