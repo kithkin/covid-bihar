@@ -1,24 +1,30 @@
 <template>
     <div class="homepage">
-        <v-container>
-            <v-row>
-                <v-col cols="12" sm="9" md="9">
+        <v-app id="covid">
+            <v-content>
+                <v-container
+                class="fill-height"
+                >
                     <v-row>
-                        <v-col sm="4">
-                            <main-card></main-card>
+                        <v-col cols="12" sm="9" md="9">
+                            <v-row>
+                                <v-col sm="4">
+                                    <main-card></main-card>
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col sm="12">
+                                    <table-card></table-card>
+                                </v-col>
+                            </v-row>
                         </v-col>
-                    </v-row>
-                    <v-row>
-                        <v-col sm="12">
-                            <table-card></table-card>
-                        </v-col>
-                    </v-row>
-                </v-col>
-                <v-col cols="12" sm="3" md="3">
+                        <v-col cols="12" sm="3" md="3">
 
-                </v-col>
-            </v-row>
-        </v-container>
+                        </v-col>
+                    </v-row>
+                </v-container>
+            </v-content>
+        </v-app>
     </div>
 </template>
 
