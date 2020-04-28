@@ -1,22 +1,26 @@
 <template>
     <v-card class="mx-auto" raised>
-        <v-card-title>BIHAR</v-card-title>
-        <v-list dense>
-        <v-subheader>REPORTS</v-subheader>
-        <v-list-item-group v-model="item" color="primary">
-            <v-list-item
-            v-for="(item, i) in items"
-            :key="i"
-            >
-            <v-list-item-icon>
-                <v-icon v-text="item.icon"></v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-                <v-list-item-title v-text="item.text"></v-list-item-title>
-            </v-list-item-content>
-            </v-list-item>
+        <p class="display-4 font-weight-bold">BIHAR</p>
+        <v-list-item-group v-model="item">
+            <v-list dense>
+                <v-list-item
+                v-for="(item, i) in items"
+                :key="i"
+                >
+                    <v-list-item-icon>
+                        <v-icon v-if="item.icon" color="pink">{{item.icon}}</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                        <v-list-item-title class="text-left">{{item.text}}</v-list-item-title>
+                    </v-list-item-content>
+                    <v-list-item-action>
+                        <p class="text-right">
+                            {{ item.case }}
+                        </p>
+                    </v-list-item-action>
+                </v-list-item>
+            </v-list>
         </v-list-item-group>
-        </v-list>
     </v-card>
 </template>
 <script>
@@ -26,9 +30,10 @@ export default {
       return {
         item: 1,
         items: [
-            { text: 'Real-Time', icon: 'mdi-clock' },
-            { text: 'Audience', icon: 'mdi-account' },
-            { text: 'Conversions', icon: 'mdi-flag' },
+            { text: 'Total Case', icon: 'fas fa-user-md', color: '', case: '12'},
+            { text: 'Active', icon: 'fas fa-hospital', color: '', case: '10'},
+            { text: 'Recovered', icon: 'fa fa-heartbeat', color: '', case: '20'},
+            { text: 'Death', icon: 'fas fa-ambulance', color: '', case: '30'},
         ],
       }
   }
