@@ -30,19 +30,13 @@
 </template>
 
 <script>
-import serviceData from './../../../services/index.js'
+
 export default {
     name: 'tablecard',
     data () {
         return {
 
         }
-    },
-    mounted() {
-        serviceData.getAllData()
-        .then(res => {
-            console.log(res);
-        })
     }
 }
 </script>

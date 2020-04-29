@@ -8,8 +8,8 @@
                     <v-row>
                         <v-col cols="12" sm="9" md="9">
                             <v-row>
-                                <v-col sm="4">
-                                    <main-card></main-card>
+                                <v-col sm="4" v-for="(data,index) in covidData" :key="'data_' + data + `${index}`">
+                                    <main-card :covid-data="data"></main-card>
                                 </v-col>
                             </v-row>
                             <v-row>
@@ -29,8 +29,9 @@
 </template>
 
 <script>
-import MainCard from './components/MainCard.vue'
-import TableCard from './components/TableCard.vue'
+import MainCard from './components/MainCard.vue';
+import TableCard from './components/TableCard.vue';
+import serviceData from './../../services/index.js';
 
 export default {
     name: 'HomePage',
@@ -40,8 +41,14 @@ export default {
     },
     data() {
         return {
-
+            covidData: [],
         }
+    },
+    mounted() {
+        serviceData.getAllData()
+        .then(res => {
+            this.covidData = res;
+        })
     }
 }
 </script>
