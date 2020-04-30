@@ -28,9 +28,22 @@ const getAllData = async() => {
     }
 }
 
-// const getDistrictData = async() => {
+const getDistrictData = async() => {
+    try {
+        const resp = await axios.get('https://api.covid19india.org/v2/state_district_wise.json');
+        var result;
+        resp.data.forEach(element => {
+            if(element.statecode == "BR") {
+                result = element.districtData
+            }
+        });
+        return result;
+    }
+    catch (error) {
+        console.error(error);
+    }
     
-// }
+}
 
 const getRecovered = async() => {
     try {
@@ -120,5 +133,6 @@ export default {
     getAllData,
     getTotal,
     getRecovered,
-    getDeath
+    getDeath,
+    getDistrictData
 }

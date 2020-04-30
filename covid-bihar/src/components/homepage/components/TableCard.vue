@@ -6,22 +6,24 @@
                 <tr> 
                     <th class="th-sm">DISTRICT&nbsp;<i ></i></th>
                     <th class="th-sm">TOTAL&nbsp;<i ></i></th>
-                    <th class="th-sm">CONFIRMED&nbsp;<i ></i></th>
+                    <th class="th-sm">ACTIVE&nbsp;<i ></i></th>
                     <th class="th-sm">NEW CASES&nbsp;<i ></i></th>
                     <th class="th-sm">DEATH&nbsp;<i ></i></th>
                     <th class="th-sm">NEW DEATH&nbsp;<i ></i></th>
                     <th class="th-sm">RECOVERED&nbsp;<i ></i></th>
+                    <th class="th-sm">NEW RECOVERED&nbsp;<i ></i></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td >HELLO-1</td>
-                    <td >HELLO-2</td>
-                    <td >HELLO-3</td>
-                    <td class="covid-bg-yellow">HELLO-4</td>
-                    <td >HELLO-5</td>
-                    <td class="covid-bg-red">HELLO-6</td>
-                    <td >HELLO-7</td>
+                <tr v-for="(data, dIndex) in this.districtData" :key="dIndex">
+                    <td >{{data.district}}</td>
+                    <td >{{data.confirmed}}</td>
+                    <td >{{data.active}}</td>
+                    <td class="covid-bg-yellow">{{data.delta.confirmed}}</td>
+                    <td >{{data.deceased}}</td>
+                    <td class="covid-bg-red">{{data.delta.deceased}}</td>
+                    <td >{{data.recovered}}</td>
+                    <td >{{data.delta.recovered}}</td>
                 </tr>                                                
             </tbody>
         </table>
@@ -33,6 +35,10 @@
 
 export default {
     name: 'tablecard',
+    props: ['districtData'],
+    component: {
+
+    },
     data () {
         return {
 
