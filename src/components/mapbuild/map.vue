@@ -12,7 +12,7 @@ Links:
 -->
 
 <template>
-  <svg width="500" height="300"></svg>
+  <svg width="420" height="280"></svg>
 </template>
 
 <script>
@@ -33,7 +33,7 @@ export default {
     height = width*height;
 
     var projection = d3.geoMercator();
-    console.log(height);
+   
     var path = d3.geoPath().projection(projection);
 
     var func = function(us) {

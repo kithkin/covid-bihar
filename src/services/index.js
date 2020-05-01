@@ -28,9 +28,22 @@ const getAllData = async() => {
     }
 }
 
-// const getDistrictData = async() => {
+const getDistrictData = async() => {
+    try {
+        const resp = await axios.get('https://api.covid19india.org/v2/state_district_wise.json');
+        var result;
+        resp.data.forEach(element => {
+            if(element.statecode == "BR") {
+                result = element.districtData
+            }
+        });
+        return result;
+    }
+    catch (error) {
+        console.error(error);
+    }
     
-// }
+}
 
 const getRecovered = async() => {
     try {
@@ -116,9 +129,28 @@ const getDeath = async() => {
     }
 }
 
+
+const dynamicData = async() => {
+
+    const total = await getTotal();
+    const recovered = await getRecovered();
+    const death = await getDeath();
+    
+    const mergeByName = (a1, a2, a3) =>
+    a1.map(totalCase => ({
+        ...a2.find((rDistrictwise) => (rDistrictwise.district == totalCase.district)),
+        ...a3.find((dDistrictwise) => (dDistrictwise.district == totalCase.district)),
+        ...totalCase
+    }));
+
+    return mergeByName(total, recovered, death);
+}
+
 export default {
     getAllData,
     getTotal,
     getRecovered,
-    getDeath
+    getDeath,
+    getDistrictData,
+    dynamicData
 }
