@@ -82,12 +82,17 @@ export default {
             this.districtData = res;
         })
     },
+    computed: {
+        currentStateDescription: function() {
+        return "District: " + this.currentState;
+        }
+    },
     methods: {
         onStateSelected: function(stateCode) {
-        this.currentState = this.statesData[stateCode];
+        this.currentState = stateCode;
         },
         onStateDeselected: function(stateCode) {
-        this.currentState = this.statesData[stateCode];
+        this.currentState = stateCode;
         this.currentState = undefined;
         }
     }
