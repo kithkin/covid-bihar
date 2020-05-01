@@ -1,18 +1,6 @@
 <template>
     <div class="homepage">
-        <div id="holder">
-            <div class="mapHolder">
-                <us-map
-                    v-on:stateSelected="onStateSelected"
-                    v-on:stateDeselected="onStateDeselected"
-                />
-            </div>
-                <tooltip
-                    v-if="currentState"
-                    :title="currentState.Name"
-                    :description="currentStateDescription"
-                />
-        </div>
+        
             <div>
                 <v-app id="covid">
                     <v-navigation-drawer
@@ -50,12 +38,29 @@
                                     </v-row>
                                     <v-row>
                                         <v-col sm="12">
-                                            <table-card></table-card>
+                                             <div id="holder">
+                                                <div class="mapHolder">
+                                                    <us-map
+                                                        v-on:stateSelected="onStateSelected"
+                                                        v-on:stateDeselected="onStateDeselected"
+                                                    />
+                                                </div>
+                                                    <tooltip
+                                                        v-if="currentState"
+                                                        :title="currentState.Name"
+                                                        :description="currentStateDescription"
+                                                    />
+                                            </div>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col sm="12">
+                                            <table-card :districtData="districtData"></table-card>
                                         </v-col>
                                     </v-row>
                                 </v-col>
                                 <v-col cols="12" sm="3" md="3">
-
+                                    
                                 </v-col>
                             </v-row>
                         </v-container>
@@ -89,7 +94,8 @@ export default {
             },
             covidData: [],
             statesData: undefined,
-            currentState: undefined
+            currentState: undefined,
+            districtData: []
         }
     },
     mounted() {
@@ -97,13 +103,23 @@ export default {
         .then(res => {
             this.covidData = res;
         })
+
+        serviceData.getDistrictData()
+        .then(res => {
+            this.districtData = res;
+        })
+    },
+    computed: {
+        currentStateDescription: function() {
+        return "District: " + this.currentState;
+        }
     },
     methods: {
         onStateSelected: function(stateCode) {
-        this.currentState = this.statesData[stateCode];
+        this.currentState = stateCode;
         },
         onStateDeselected: function(stateCode) {
-        this.currentState = this.statesData[stateCode];
+        this.currentState = stateCode;
         this.currentState = undefined;
         }
     }

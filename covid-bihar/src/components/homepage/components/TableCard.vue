@@ -1,27 +1,29 @@
 <template>
     <div>
-        <v-card class="mx-auto" raised>
-        <table class="table table-bordered table-hover">
+        <v-card class="mx-auto pa-2" raised>
+        <table class="table table-bordered table-hover table-responsive my-table">
             <thead>
-                <tr> 
-                    <th class="th-sm">DISTRICT&nbsp;<i ></i></th>
-                    <th class="th-sm">TOTAL&nbsp;<i ></i></th>
-                    <th class="th-sm">CONFIRMED&nbsp;<i ></i></th>
-                    <th class="th-sm">NEW CASES&nbsp;<i ></i></th>
-                    <th class="th-sm">DEATH&nbsp;<i ></i></th>
-                    <th class="th-sm">NEW DEATH&nbsp;<i ></i></th>
-                    <th class="th-sm">RECOVERED&nbsp;<i ></i></th>
+                <tr class="my-th"> 
+                    <th class="th-sm my-vert-align">DISTRICT&nbsp;<i class="fa fa-sort"></i></th>
+                    <th class="th-sm"><span class="vetrical-text"><span class="vertical-rotate">TOTAL<br>CASES&nbsp;</span><i class="fa fa-sort"></i></span></th>
+                    <th class="th-sm"><span class="vetrical-text"><span class="vertical-rotate">ACTIVE<br>CASES&nbsp;</span><i class="fa fa-sort"></i></span></th>
+                    <th class="th-sm"><span class="vetrical-text"><span class="vertical-rotate">NEW<br> CASES&nbsp;</span><i class="fa fa-sort"></i></span></th>
+                    <th class="th-sm my-vert-align"><span class="vetrical-text"><span class="vertical-rotate">RECOVERED&nbsp;</span><i class="fa fa-sort"></i></span></th>
+                    <th class="th-sm"><span class="vetrical-text"><span class="vertical-rotate">NEW<br>RECOVERED&nbsp;</span><i class="fa fa-sort"></i></span></th>
+                    <th class="th-sm"><span class="vetrical-text"><span class="vertical-rotate">DEATH<br>CASES&nbsp;</span><i class="fa fa-sort"></i></span></th>
+                    <th class="th-sm"><span class="vetrical-text"><span class="vertical-rotate">NEW<br>DEATH&nbsp;</span><i class="fa fa-sort"></i></span></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td >HELLO-1</td>
-                    <td >HELLO-2</td>
-                    <td >HELLO-3</td>
-                    <td class="covid-bg-yellow">HELLO-4</td>
-                    <td >HELLO-5</td>
-                    <td class="covid-bg-red">HELLO-6</td>
-                    <td >HELLO-7</td>
+                <tr class="my-td" v-for="(data, dIndex) in this.districtData" :key="dIndex">
+                    <td >{{data.district}}</td>
+                    <td >{{data.confirmed}}</td>
+                    <td >{{data.active}}</td>
+                    <td :class="{'covid-bg-blue':data.delta.confirmed > 0}">{{data.delta.confirmed > 0 ? `+ ` + data.delta.confirmed : ''}}</td>
+                    <td >{{data.recovered > 0 ? data.recovered : ''}}</td>
+                    <td :class="{'covid-bg-green':data.delta.recovered > 0}">{{data.delta.recovered > 0 ? `+ ` + data.delta.recovered : ''}}</td>
+                    <td :class="{'covid-text-red':data.deceased > 0}">{{data.deceased > 0 ? data.deceased : ''}}</td>
+                    <td :class="{'covid-bg-red':data.delta.deceased > 0}">{{data.delta.deceased > 0 ? `+ ` + data.delta.deceased : ''}}</td>
                 </tr>                                                
             </tbody>
         </table>
@@ -33,6 +35,10 @@
 
 export default {
     name: 'tablecard',
+    props: ['districtData'],
+    component: {
+
+    },
     data () {
         return {
 
@@ -43,11 +49,65 @@ export default {
 
 <style>
     .covid-bg-red {
-        background-color: red;
+        background-color: #f9e4e5;
+        color: #e43e33;
+    }
+    .covid-bg-blue {
+        background-color: #e5f2fd;
+        color: #4296f3;
+    }
+    .covid-bg-green {
+        background-color: #e6f5ea;
+        color: #5faf50;
+    }
+    .covid-text-red {
+        color: #e43e33;
+    }
+    .covid-text-blue {
+        color: #4296f3;
+    }
+    .covid-text-green {
+        color: #5faf50;
+    }
+    .my-th {
+        font-size: 14px;
+        background-color: #4296f3;
         color: white;
     }
-    .covid-bg-yellow {
-        background-color: #FFEEAA;
+    .my-td {
+        font-size: 12px;
+        font-weight: 500;
+    }
+    .my-table {
+        margin-bottom: 0rem !important;
+    }
+    .table-responsive {
+        display: inline-table !important;
+    }
+    .my-vert-align {
+        vertical-align: middle !important;
+    }
+    @media only screen and (max-width: 768px) {
+        .table-responsive {
+            display: block !important;
+        }
+        .vetrical-text {
+            writing-mode: vertical-rl;
+            white-space: nowrap;
+        }
+        .vetrical-text br {
+            content:' ';
+        }
+        .vetrical-text br:after {
+            content:' ';
+        }
+        .vertical-rotate {
+            display: inline-block;
+            transform: rotate(-180deg);
+        }
+        .my-vert-align {
+            vertical-align: bottom !important;
+        }
     }
 
 </style>
