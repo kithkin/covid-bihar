@@ -1,32 +1,76 @@
 <template>
     <div>
         <v-card class="mx-auto" raised>
-            <v-data-table
-                :headers="headers"
-                :items="districtData"
-                class="elevation-1"
+            <v-tabs
+            v-model="tab"
             >
-                <template v-slot:item.newC="{ item }">
-                    <div v-if="item.newC > 0">
-                        <v-chip :color="getColorT(item.newC)">+ {{ item.newC }}</v-chip>
-                    </div>
-                </template>
-                <template v-slot:item.newR="{ item }">
-                    <div v-if="item.newR > 0">
-                        <v-chip :color="getColorR(item.newR)">+ {{ item.newR }}</v-chip>
-                    </div>
-                </template>
-                <template v-slot:item.newD="{ item }">
-                    <div v-if="item.newD > 0">
-                        <v-chip :color="getColorD(item.newD)">+ {{ item.newD }}</v-chip>
-                    </div>
-                </template>
-            </v-data-table>
+                <v-tab
+                    v-for="item in items"
+                    :key="item.tab"
+                >
+                    {{ item.tab }}
+                </v-tab>
+            </v-tabs>
+
+            <v-tabs-items v-model="tab">
+                <v-tab-item
+                >
+                    <v-card flat>
+                        <v-data-table
+                        :headers="headers"
+                        :items="districtData"
+                        class="elevation-1 pt-2"
+                        :loading ="loadingTable" 
+                        loading-text="Loading... Please wait"
+                        >
+                            <template v-slot:item.newC="{ item }">
+                                <div v-if="item.newC > 0">
+                                    <v-chip :color="getColorT(item.newC)">+ {{ item.newC }}</v-chip>
+                                </div>
+                            </template>
+                            <template v-slot:item.newR="{ item }">
+                                <div v-if="item.newR > 0">
+                                    <v-chip :color="getColorR(item.newR)">+ {{ item.newR }}</v-chip>
+                                </div>
+                            </template>
+                            <template v-slot:item.newD="{ item }">
+                                <div v-if="item.newD > 0">
+                                    <v-chip :color="getColorD(item.newD)">+ {{ item.newD }}</v-chip>
+                                </div>
+                            </template>
+                        </v-data-table>
+                    </v-card>
+                </v-tab-item>
+                <v-tab-item
+                >
+                    <v-card flat>
+                        <v-data-table
+                        :headers="headers"
+                        :items="districtData"
+                        class="elevation-1 pt-2"
+                        :loading ="loadingTable"  
+                        loading-text="Loading... Please wait"
+                        >
+                            <template v-slot:item.newC="{ item }">
+                                <div v-if="item.newC > 0">
+                                    <v-chip :color="getColorT(item.newC)">+ {{ item.newC }}</v-chip>
+                                </div>
+                            </template>
+                            <template v-slot:item.newR="{ item }">
+                                <div v-if="item.newR > 0">
+                                    <v-chip :color="getColorR(item.newR)">+ {{ item.newR }}</v-chip>
+                                </div>
+                            </template>
+                            <template v-slot:item.newD="{ item }">
+                                <div v-if="item.newD > 0">
+                                    <v-chip :color="getColorD(item.newD)">+ {{ item.newD }}</v-chip>
+                                </div>
+                            </template>
+                        </v-data-table>
+                    </v-card>
+                </v-tab-item>
+            </v-tabs-items>
     
-
-
-
-
 
 
         <!-- <table class="table table-bordered table-hover table-responsive my-table">
@@ -63,7 +107,7 @@
 
 export default {
     name: 'tablecard',
-    props: ['districtData'],
+    props: ['districtData', 'loadingTable'],
     component: {
 
     },
@@ -84,6 +128,11 @@ export default {
                 { text: 'ठीक हुए (आज)', value: 'newR', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'मृत्यु (कुल)', value: 'totalD', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'मृत्यु (आज)', value: 'newD', class: 'blue lighten 2 white--text subtitle-2' },
+            ],
+            tab: null,
+            items: [
+                { tab: 'BIHAR'},
+                { tab: 'INDIA'},
             ],
             // desserts: this.districtData
             // [
