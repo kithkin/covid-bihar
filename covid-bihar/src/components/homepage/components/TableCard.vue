@@ -7,7 +7,9 @@
                 class="elevation-1"
             >
                 <template v-slot:item.newcases="{ item }">
-                <v-chip :color="getColor(item.newcases)" dark>{{ item.newcases }}</v-chip>
+                    <div v-if="item.newcases > 0">
+                        <v-chip :color="getColor(item.newcases)">{{ item.newcases }}</v-chip>
+                    </div>
                 </template>
             </v-data-table>
     
@@ -110,11 +112,7 @@ export default {
     },
     methods: {
       getColor (newcases) {
-          if(newcases >= 0) {
-            if (newcases > 0) return 'blue lighten-3'
-            // else if (newcases > 10 && newcases <= 50) return 'orange'
-            else return 'no-data-text'
-          }
+        if (newcases > 0) return 'blue lighten-3';
       },
     },
 
