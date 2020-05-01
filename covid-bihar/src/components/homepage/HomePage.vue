@@ -105,6 +105,12 @@ export default {
 
         serviceData.getDistrictData()
         .then(res => {
+            console.log(res);
+            // this.districtData = res;
+        })
+
+        serviceData.dynamicData()
+        .then(res => {
             this.districtData = res;
         })
     },

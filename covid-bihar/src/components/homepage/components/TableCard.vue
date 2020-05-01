@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-card class="mx-auto pa-2" raised>
+        <v-card class="mx-auto" raised>
             <v-data-table
                 :headers="headers"
                 :items="desserts"
@@ -8,7 +8,17 @@
             >
                 <template v-slot:item.newcases="{ item }">
                     <div v-if="item.newcases > 0">
-                        <v-chip :color="getColor(item.newcases)">{{ item.newcases }}</v-chip>
+                        <v-chip :color="getColorT(item.newcases)">+ {{ item.newcases }}</v-chip>
+                    </div>
+                </template>
+                <template v-slot:item.newrecovered="{ item }">
+                    <div v-if="item.newrecovered > 0">
+                        <v-chip :color="getColorR(item.newrecovered)">+ {{ item.newrecovered }}</v-chip>
+                    </div>
+                </template>
+                <template v-slot:item.newdeceased="{ item }">
+                    <div v-if="item.newdeceased > 0">
+                        <v-chip :color="getColorD(item.newdeceased)">+ {{ item.newdeceased }}</v-chip>
                     </div>
                 </template>
             </v-data-table>
@@ -64,60 +74,66 @@ export default {
                     text: 'District',
                     align: 'start',
                     sortable: false,
-                    value: 'district',
+                    value: 'districtHi',
                     class: 'blue lighten 2 white--text subtitle-2'
                 },
-                { text: 'Total', value: 'confirmed', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'New Cases', value: 'newcases', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'Total', value: 'totalT', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'New Cases', value: 'newC', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'Active', value: 'active', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'Recovered', value: 'recovered', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'New Recovered', value: 'newrecovered', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'Death', value: 'deceased', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'New Death', value: 'newdeceased', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'Recovered', value: 'totalR', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'New Recovered', value: 'newR', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'Death', value: 'totalD', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'New Death', value: 'newD', class: 'blue lighten 2 white--text subtitle-2' },
             ],
             desserts: [
-                {
-                    district: 'Munger',
-                    confirmed: 95,
-                    newcases: 3,
-                    active: 77,
-                    recovered: 17,
-                    newrecovered: 6,
-                    deceased: 1,
-                    newdeceased: 0
-                },
-                {
-                    district: 'Patna',
-                    confirmed: 44,
-                    newcases: 0,
-                    active: 38,
-                    recovered: 6,
-                    newrecovered: 1,
-                    deceased: 0,
-                    newdeceased: 0
-                },
-                {
-                    district: 'Rohtas',
-                    confirmed: 45,
-                    newcases: 11,
-                    active: 45,
-                    recovered: 0,
-                    newrecovered: 0,
-                    deceased: 0,
-                    newdeceased: 0
-                },
+                // {
+                //     district: 'Munger',
+                //     confirmed: 95,
+                //     newcases: 3,
+                //     active: 77,
+                //     recovered: 17,
+                //     newrecovered: 6,
+                //     deceased: 1,
+                //     newdeceased: 1
+                // },
+                // {
+                //     district: 'Patna',
+                //     confirmed: 44,
+                //     newcases: 0,
+                //     active: 38,
+                //     recovered: 6,
+                //     newrecovered: 1,
+                //     deceased: 0,
+                //     newdeceased: 0
+                // },
+                // {
+                //     district: 'Rohtas',
+                //     confirmed: 45,
+                //     newcases: 11,
+                //     active: 45,
+                //     recovered: 0,
+                //     newrecovered: 0,
+                //     deceased: 0,
+                //     newdeceased: 0
+                // },
             ],
             
         }
     },
     methods: {
-      getColor (newcases) {
+      getColorT (newcases) {
         if (newcases > 0) return 'blue lighten-3';
+      },
+      getColorR (newrecovered) {
+        if (newrecovered > 0) return 'green lighten-3';
+      },
+      getColorD (newdeceased) {
+        if (newdeceased > 0) return 'red lighten-3';
       },
     },
 
     mounted() {
-
+        this.desserts = this.districtData;
     }
 }
 </script>

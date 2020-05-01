@@ -143,7 +143,7 @@ const dynamicData = async() => {
         ...totalCase
     }));
 
-    console.log(mergeByName(total, recovered, death));
+    return mergeByName(total, recovered, death);
 }
 
 export default {
