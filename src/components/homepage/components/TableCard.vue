@@ -17,7 +17,7 @@
                 >
                     <v-card flat>
                         <v-data-table
-                        :headers="headers"
+                        :headers="biharHeaders"
                         :items="districtData"
                         class="elevation-1 pt-2"
                         :loading ="loadingTable" 
@@ -45,8 +45,8 @@
                 >
                     <v-card flat>
                         <v-data-table
-                        :headers="headers"
-                        :items="districtData"
+                        :headers="indiaHeaders"
+                        :items="indiaData"
                         class="elevation-1 pt-2"
                         :loading ="loadingTable"  
                         loading-text="Loading... Please wait"
@@ -107,13 +107,13 @@
 
 export default {
     name: 'tablecard',
-    props: ['districtData', 'loadingTable'],
+    props: ['districtData', 'loadingTable', 'indiaData'],
     component: {
 
     },
     data () {
         return {
-            headers: [
+            biharHeaders: [
                 {
                     text: 'जिला',
                     align: 'start',
@@ -129,45 +129,27 @@ export default {
                 { text: 'मृत्यु (कुल)', value: 'totalD', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'मृत्यु (आज)', value: 'newD', class: 'blue lighten 2 white--text subtitle-2' },
             ],
+            indiaHeaders: [
+                {
+                    text: 'जिला',
+                    align: 'start',
+                    sortable: false,
+                    value: 'stateHi',
+                    class: 'blue lighten 2 white--text subtitle-2'
+                },
+                { text: 'संक्रमित (कुल)', value: 'confirmed', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'संक्रमित (आज)', value: 'deltaconfirmed', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'सक्रिय', value: 'active', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'ठीक हुए', value: 'recovered', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'ठीक हुए (आज)', value: 'deltarecovered', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (कुल)', value: 'deaths', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (आज)', value: 'deltadeaths', class: 'blue lighten 2 white--text subtitle-2' },
+            ],
             tab: null,
             items: [
                 { tab: 'BIHAR'},
                 { tab: 'INDIA'},
             ],
-            // desserts: this.districtData
-            // [
-                // {
-                //     district: 'Munger',
-                //     confirmed: 95,
-                //     newcases: 3,
-                //     active: 77,
-                //     recovered: 17,
-                //     newrecovered: 6,
-                //     deceased: 1,
-                //     newdeceased: 1
-                // },
-                // {
-                //     district: 'Patna',
-                //     confirmed: 44,
-                //     newcases: 0,
-                //     active: 38,
-                //     recovered: 6,
-                //     newrecovered: 1,
-                //     deceased: 0,
-                //     newdeceased: 0
-                // },
-                // {
-                //     district: 'Rohtas',
-                //     confirmed: 45,
-                //     newcases: 11,
-                //     active: 45,
-                //     recovered: 0,
-                //     newrecovered: 0,
-                //     deceased: 0,
-                //     newdeceased: 0
-                // },
-            // ],
-            
         }
     },
     methods: {

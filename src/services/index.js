@@ -1,5 +1,40 @@
 import axios from 'axios';
 
+const stateHindi = {
+    "Andaman and Nicobar Islands" : "अंडमान व नोकोबार द्वीप समूह",
+    "Andhra Pradesh" : "आंध्र प्रदेश",
+    "Arunachal Pradesh" : "अरुणाचल प्रदेश",
+    "Assam" : "आसाम",
+    "Bihar" : "बिहार",
+    "Chhattisgarh" : "छत्तीसगढ़",
+    "Delhi" : "दिल्ली",
+    "Goa" : "गोवा",
+    "Gujarat" : "गुजरात",
+    "Haryana" : "हरियाणा",
+    "Himachal Pradesh" : "हिमाचल प्रदेश",
+    "Jharkhand" : "झारखंड",
+    "Karnataka" : "कर्नाटक",
+    "Kerala" : "केरल",
+    "Madhya Pradesh" : "मध्य प्रदेश",
+    "Maharashtra" : "महाराष्ट्र",
+    "Manipur" : "मणिपुर",
+    "Meghalaya" : "मेघालय",
+    "Mizoram" : "मिजोरम",
+    "Odisha" : "उड़ीसा",
+    "Puducherry" : "पुडुचेरी",
+    "Punjab" : "पंजाब",
+    "Rajasthan" : "राजस्थान",
+    "Tamil Nadu" : "तमिल नाडु",
+    "Telangana" : "तेलंगाना",
+    "Tripura" : "त्रिपुरा",
+    "Chandigarh" : "चंडीगढ़",
+    "Jammu and Kashmir" : "जम्मू और कश्मीर",
+    "Ladakh" : "लद्दाख",
+    "Uttar Pradesh" : "उत्तर प्रदेश",
+    "Uttarakhand" : "उत्तराखंड",
+    "West Bengal" : "पश्चिम बंगाल"
+}
+
 const getAllData = async() => {
     try {
         const resp = await axios.get('https://docs.google.com/spreadsheets/d/1gw1m2JuspwZ7a8SEijkw-M-3g377GGzXdAYKehzCpHQ/export?format=csv&id=1gw1m2JuspwZ7a8SEijkw-M-3g377GGzXdAYKehzCpHQ')
@@ -161,8 +196,19 @@ const dynamicData = async() => {
 
 const getIndiaData = async() => {
     try {
-        const resp = await axios.get('https://api.covid19india.org/data.json')
-        return resp.data.statewise;
+        const resp = await axios.get('https://api.covid19india.org/data.json');
+        let statewiseData = resp.data.statewise;
+        statewiseData.shift();
+        let stateHi = '';
+        statewiseData.forEach( (stateObj) => {
+            for(var key in stateHindi) {
+                if(key === stateObj.state) {
+                    stateHi = stateHindi[key];
+                }
+            }
+            stateObj.stateHi = stateHi;
+        });
+        return statewiseData;
     }
     catch(error) {
         console.error(error)
