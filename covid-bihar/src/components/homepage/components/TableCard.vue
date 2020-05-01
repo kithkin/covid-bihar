@@ -110,9 +110,9 @@ export default {
     },
     methods: {
       getColor (newcases) {
-        if (newcases > 0) return 'blue lighten-3'
-        else if (newcases > 200) return 'orange'
-        else return 'green'
+        if (newcases <= 10) return 'blue lighten-3'
+        else if (newcases > 10 && newcases <= 50) return 'orange'
+        else return 'red'
       },
     },
 
