@@ -130,50 +130,27 @@ const getDeath = async() => {
 }
 
 
-// const dynamicData = async() => {
+const dynamicData = async() => {
 
-//     const total = getTotal();
-//     const recovered = getRecovered();
-//     const death = getDeath();
+    const total = await getTotal();
+    const recovered = await getRecovered();
+    const death = await getDeath();
+    
+    const mergeByName = (a1, a2, a3) =>
+    a1.map(totalCase => ({
+        ...a2.find((rDistrictwise) => (rDistrictwise.district == totalCase.district)),
+        ...a3.find((dDistrictwise) => (dDistrictwise.district == totalCase.district)),
+        ...totalCase
+    }));
 
-
-//     total.forEach(tel => {
-//         recovered.forEach(rel => {
-//           death.forEach(del => {
-//             for (var i = 0; i < total.length; i++) {
-//               if(total[i].district == rel.district && total[i].district == del.district) {
-//                 var totalNewCases = tel[Object.keys(tel)[Object.keys(tel).length - 2]]
-//                 var totalNewRecovered = rel[Object.keys(rel)[Object.keys(rel).length - 2]]
-//                 var totalNewDeath = del[Object.keys(del)[Object.keys(del).length - 2]]
-//                 // for (var j =0; j < a.length; j++) {
-//                   // if(total[i].district === a[j].district){
-//                     arr.push({
-//                       district: tel.district,
-//                       districtHi: tel.districtHi,
-//                       totalCases: tel.total,
-//                       totalNewCases: totalNewCases,
-//                       totalRecovered: rel.total,
-//                       totalNewRecovered: totalNewRecovered,
-//                       totalDeath: del.total,
-//                       totalNewDeath: totalNewDeath
-//                     })
-//                   // }
-//                 // }
-                
-//               }
-//             }
-            
-      
-      
-//           })
-//         })
-//       })
-// }
+    console.log(mergeByName(total, recovered, death));
+}
 
 export default {
     getAllData,
     getTotal,
     getRecovered,
     getDeath,
-    getDistrictData
+    getDistrictData,
+    dynamicData
 }
