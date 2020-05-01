@@ -10,7 +10,7 @@
                         <v-icon color="grey">fas fa-user-md</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
-                        <v-list-item-title class="text-left font-weight-medium">Total Case</v-list-item-title>
+                        <v-list-item-title class="text-left font-weight-medium">कुल संक्रमित</v-list-item-title>
                     </v-list-item-content>
                     <div v-if="covidData.total">
                         {{ covidData.total }}
@@ -36,7 +36,7 @@
                         <v-icon color="green">fa fa-heartbeat</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
-                        <v-list-item-title class="text-left font-weight-medium">Recovered</v-list-item-title>
+                        <v-list-item-title class="text-left font-weight-medium">कुल स्वस्थ</v-list-item-title>
                     </v-list-item-content>
                     <div v-if="covidData.recovered">
                         {{ covidData.recovered }}
@@ -49,7 +49,7 @@
                         <v-icon color="red">fas fa-heart-broken</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
-                        <v-list-item-title class="text-left font-weight-medium">Death</v-list-item-title>
+                        <v-list-item-title class="text-left font-weight-medium">कुल मृत्यु</v-list-item-title>
                     </v-list-item-content>
                     <div v-if="covidData.death">
                         {{ covidData.death }}

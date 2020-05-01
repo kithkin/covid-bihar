@@ -6,19 +6,19 @@
                 :items="desserts"
                 class="elevation-1"
             >
-                <template v-slot:item.newcases="{ item }">
-                    <div v-if="item.newcases > 0">
-                        <v-chip :color="getColorT(item.newcases)">+ {{ item.newcases }}</v-chip>
+                <template v-slot:item.newC="{ item }">
+                    <div v-if="item.newC > 0">
+                        <v-chip :color="getColorT(item.newC)">+ {{ item.newC }}</v-chip>
                     </div>
                 </template>
-                <template v-slot:item.newrecovered="{ item }">
-                    <div v-if="item.newrecovered > 0">
-                        <v-chip :color="getColorR(item.newrecovered)">+ {{ item.newrecovered }}</v-chip>
+                <template v-slot:item.newR="{ item }">
+                    <div v-if="item.newR > 0">
+                        <v-chip :color="getColorR(item.newR)">+ {{ item.newR }}</v-chip>
                     </div>
                 </template>
-                <template v-slot:item.newdeceased="{ item }">
-                    <div v-if="item.newdeceased > 0">
-                        <v-chip :color="getColorD(item.newdeceased)">+ {{ item.newdeceased }}</v-chip>
+                <template v-slot:item.newD="{ item }">
+                    <div v-if="item.newD > 0">
+                        <v-chip :color="getColorD(item.newD)">+ {{ item.newD }}</v-chip>
                     </div>
                 </template>
             </v-data-table>
@@ -71,21 +71,22 @@ export default {
         return {
             headers: [
                 {
-                    text: 'District',
+                    text: 'जिला',
                     align: 'start',
                     sortable: false,
                     value: 'districtHi',
                     class: 'blue lighten 2 white--text subtitle-2'
                 },
-                { text: 'Total', value: 'totalT', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'New Cases', value: 'newC', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'संक्रमित (कुल)', value: 'totalT', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'संक्रमित (आज)', value: 'newC', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'Active', value: 'active', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'Recovered', value: 'totalR', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'New Recovered', value: 'newR', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'Death', value: 'totalD', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'New Death', value: 'newD', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'ठीक हुए', value: 'totalR', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'ठीक हुए (आज)', value: 'newR', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (कुल)', value: 'totalD', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (आज)', value: 'newD', class: 'blue lighten 2 white--text subtitle-2' },
             ],
-            desserts: [
+            desserts: this.districtData
+            // [
                 // {
                 //     district: 'Munger',
                 //     confirmed: 95,
@@ -116,24 +117,23 @@ export default {
                 //     deceased: 0,
                 //     newdeceased: 0
                 // },
-            ],
+            // ],
             
         }
     },
     methods: {
-      getColorT (newcases) {
-        if (newcases > 0) return 'blue lighten-3';
+      getColorT (newC) {
+        if (newC > 0) return 'blue lighten-3';
       },
-      getColorR (newrecovered) {
-        if (newrecovered > 0) return 'green lighten-3';
+      getColorR (newR) {
+        if (newR > 0) return 'green lighten-3';
       },
-      getColorD (newdeceased) {
-        if (newdeceased > 0) return 'red lighten-3';
+      getColorD (newD) {
+        if (newD > 0) return 'red lighten-3';
       },
     },
 
     mounted() {
-        this.desserts = this.districtData;
     }
 }
 </script>
