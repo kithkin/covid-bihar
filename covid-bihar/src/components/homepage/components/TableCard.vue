@@ -7,7 +7,7 @@
                 class="elevation-1"
             >
                 <template v-slot:item.newcases="{ item }">
-                <v-chip :color="getColor(item.newcases)" dark>{{ item.calories }}</v-chip>
+                <v-chip :color="getColor(item.newcases)" dark>{{ item.newcases }}</v-chip>
                 </template>
             </v-data-table>
     
