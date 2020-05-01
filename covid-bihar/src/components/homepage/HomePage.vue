@@ -38,7 +38,7 @@
                                             <main-card :covid-data="data"></main-card>
                                         </v-col>
                                     </v-row>
-                                    <!-- <v-row>
+                                    <v-row>
                                         <v-col sm="12" class="text-center">
                                              <div id="holder">
                                                 <div class="mapHolder">
@@ -46,15 +46,15 @@
                                                         v-on:stateSelected="onStateSelected"
                                                         v-on:stateDeselected="onStateDeselected"
                                                     />
-                                                </div>
                                                     <tooltip
                                                         v-if="currentState"
                                                         :title="currentState.Name"
                                                         :description="currentStateDescription"
                                                     />
+                                                </div>
                                             </div>
                                         </v-col>
-                                    </v-row> -->
+                                    </v-row>
                                     <v-row>
                                         <v-col sm="12">
                                             <table-card :districtData="districtData"></table-card>
@@ -73,16 +73,16 @@
 import MainCard from './components/MainCard.vue';
 import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
-// const map = require('./../mapbuild/map').default;
-// const tooltip = require('./../mapbuild/tooltip').default;
+const map = require('./../mapbuild/map').default;
+const tooltip = require('./../mapbuild/tooltip').default;
 
 export default {
     name: 'HomePage',
     components: {
         TableCard,
         MainCard,
-        // usMap: map,
-        // tooltip: tooltip
+        usMap: map,
+        tooltip: tooltip
     },
     data() {
         return {
@@ -134,12 +134,12 @@ export default {
 <style scoped>
 #holder {
   position: relative;
-  height: 300px;
-  width: 420px;
+  height: 100%;
+  width: auto;
   margin: auto;
 }
 .mapHolder {
-  position: absolute;
+  position: relative;
   margin: auto;
 }
 </style>
