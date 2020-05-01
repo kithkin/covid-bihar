@@ -12,7 +12,7 @@ Links:
 -->
 
 <template>
-  <svg width="420" height="280"></svg>
+  <svg width="100%" height="auto"></svg>
 </template>
 
 <script>
@@ -51,7 +51,7 @@ export default {
           .on('mouseout', function(d) {
             v.$emit('stateDeselected', d.properties.Dist_Name)
           })
-      g.attr('transform', 'scale(1.4)')
+      g.attr('transform', 'scale(0.75)')
     };
 
     func(json);
