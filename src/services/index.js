@@ -146,11 +146,22 @@ const dynamicData = async() => {
     return mergeByName(total, recovered, death);
 }
 
+const getIndiaData = async() => {
+    try {
+        const resp = await axios.get('https://api.covid19india.org/data.json')
+        return resp.data.statewise;
+    }
+    catch(error) {
+        console.error(error)
+    }
+}
+
 export default {
     getAllData,
     getTotal,
     getRecovered,
     getDeath,
     getDistrictData,
-    dynamicData
+    dynamicData,
+    getIndiaData
 }

@@ -57,7 +57,7 @@
                                     </v-row> -->
                                     <v-row>
                                         <v-col sm="12">
-                                            <table-card :districtData="districtData"></table-card>
+                                            <table-card :districtData="districtData" :indiaData="indiaData"></table-card>
                                         </v-col>
                                     </v-row>
                                 </v-col>
@@ -94,7 +94,8 @@ export default {
             covidData: [],
             statesData: undefined,
             currentState: undefined,
-            districtData: []
+            districtData: [],
+            indiaData: []
         }
     },
     mounted() {
@@ -111,7 +112,13 @@ export default {
 
         serviceData.dynamicData()
         .then(res => {
+            res.pop()
             this.districtData = res;
+        })
+
+        serviceData.getIndiaData()
+        .then(res => {
+            this.indiaData = res;
         })
     },
     computed: {

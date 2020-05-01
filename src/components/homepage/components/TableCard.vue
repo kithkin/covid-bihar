@@ -79,7 +79,7 @@ export default {
                 },
                 { text: 'संक्रमित (कुल)', value: 'totalT', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'संक्रमित (आज)', value: 'newC', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'Active', value: 'active', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'सक्रिय', value: 'active', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'ठीक हुए', value: 'totalR', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'ठीक हुए (आज)', value: 'newR', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'मृत्यु (कुल)', value: 'totalD', class: 'blue lighten 2 white--text subtitle-2' },
