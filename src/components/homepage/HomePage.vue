@@ -73,7 +73,7 @@
                                     </v-row>
                                     <v-row>
                                         <v-col sm="12">
-                                            <table-card :districtData="districtData" :loadingTable="loadingTable" :indiaData="indiaData"></table-card>
+                                            <table-card :districtData="districtData" :loadingTable="loadingTable" :indiaData="indiaData" :worldData="worldData"></table-card>
                                         </v-col>
                                     </v-row>
                                 </v-col>
@@ -112,6 +112,7 @@ export default {
             currentState: undefined,
             districtData: [],
             indiaData: [],
+            worldData: [],
             loadingTable: true,
             fab: false
         }
@@ -128,7 +129,7 @@ export default {
         //     // this.districtData = res;
         // })
 
-        serviceData.dynamicData()
+        serviceData.getBiharData()
         .then(res => {
             this.districtData = res.tableData;
             this.loadingTable = res.loading;
@@ -137,6 +138,12 @@ export default {
         serviceData.getIndiaData()
         .then(res => {
             this.indiaData = res;
+        })
+
+        serviceData.getWorldData()
+        .then(res => {
+            res.pop()
+            this.worldData = res;
         })
     },
     computed: {

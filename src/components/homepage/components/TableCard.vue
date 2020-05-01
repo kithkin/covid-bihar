@@ -13,8 +13,7 @@
             </v-tabs>
 
             <v-tabs-items v-model="tab">
-                <v-tab-item
-                >
+                <v-tab-item>
                     <v-card flat>
                         <v-data-table
                         :headers="biharHeaders"
@@ -41,8 +40,7 @@
                         </v-data-table>
                     </v-card>
                 </v-tab-item>
-                <v-tab-item
-                >
+                <v-tab-item>
                     <v-card flat>
                         <v-data-table
                         :headers="indiaHeaders"
@@ -51,19 +49,46 @@
                         :loading ="loadingTable"  
                         loading-text="Loading... Please wait"
                         >
-                            <template v-slot:item.newC="{ item }">
-                                <div v-if="item.newC > 0">
-                                    <v-chip :color="getColorT(item.newC)">+ {{ item.newC }}</v-chip>
+                            <template v-slot:item.deltaconfirmed="{ item }">
+                                <div v-if="item.deltaconfirmed > 0">
+                                    <v-chip :color="getColorT(item.deltaconfirmed)">+ {{ item.deltaconfirmed }}</v-chip>
                                 </div>
                             </template>
-                            <template v-slot:item.newR="{ item }">
-                                <div v-if="item.newR > 0">
-                                    <v-chip :color="getColorR(item.newR)">+ {{ item.newR }}</v-chip>
+                            <template v-slot:item.deltarecovered="{ item }">
+                                <div v-if="item.deltarecovered > 0">
+                                    <v-chip :color="getColorR(item.deltarecovered)">+ {{ item.deltarecovered }}</v-chip>
                                 </div>
                             </template>
-                            <template v-slot:item.newD="{ item }">
-                                <div v-if="item.newD > 0">
-                                    <v-chip :color="getColorD(item.newD)">+ {{ item.newD }}</v-chip>
+                            <template v-slot:item.deltadeaths="{ item }">
+                                <div v-if="item.deltadeaths > 0">
+                                    <v-chip :color="getColorD(item.deltadeaths)">+ {{ item.deltadeaths }}</v-chip>
+                                </div>
+                            </template>
+                        </v-data-table>
+                    </v-card>
+                </v-tab-item>
+                <v-tab-item>
+                    <v-card flat>
+                        <v-data-table
+                        :headers="worldHeaders"
+                        :items="worldData"
+                        class="elevation-1 pt-2"
+                        :loading ="loadingTable"  
+                        loading-text="Loading... Please wait"
+                        >
+                            <template v-slot:item.deltaconfirmed="{ item }">
+                                <div v-if="item.deltaconfirmed > 0">
+                                    <v-chip :color="getColorT(item.deltaconfirmed)">+ {{ item.deltaconfirmed }}</v-chip>
+                                </div>
+                            </template>
+                            <template v-slot:item.deltarecovered="{ item }">
+                                <div v-if="item.deltarecovered > 0">
+                                    <v-chip :color="getColorR(item.deltarecovered)">+ {{ item.deltarecovered }}</v-chip>
+                                </div>
+                            </template>
+                            <template v-slot:item.deltadeaths="{ item }">
+                                <div v-if="item.deltadeaths > 0">
+                                    <v-chip :color="getColorD(item.deltadeaths)">+ {{ item.deltadeaths }}</v-chip>
                                 </div>
                             </template>
                         </v-data-table>
@@ -107,7 +132,7 @@
 
 export default {
     name: 'tablecard',
-    props: ['districtData', 'loadingTable', 'indiaData'],
+    props: ['districtData', 'loadingTable', 'indiaData', 'worldData'],
     component: {
 
     },
@@ -131,7 +156,23 @@ export default {
             ],
             indiaHeaders: [
                 {
-                    text: 'जिला',
+                    text: 'राज्य',
+                    align: 'start',
+                    sortable: false,
+                    value: 'stateHi',
+                    class: 'blue lighten 2 white--text subtitle-2'
+                },
+                { text: 'संक्रमित (कुल)', value: 'confirmed', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'संक्रमित (आज)', value: 'deltaconfirmed', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'सक्रिय', value: 'active', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'ठीक हुए', value: 'recovered', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'ठीक हुए (आज)', value: 'deltarecovered', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (कुल)', value: 'deaths', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (आज)', value: 'deltadeaths', class: 'blue lighten 2 white--text subtitle-2' },
+            ],
+            worldHeaders: [
+                {
+                    text: 'देश',
                     align: 'start',
                     sortable: false,
                     value: 'stateHi',
@@ -147,8 +188,9 @@ export default {
             ],
             tab: null,
             items: [
-                { tab: 'BIHAR'},
-                { tab: 'INDIA'},
+                { tab: 'बिहार'},
+                { tab: 'भारत'},
+                { tab: 'विश्व'},
             ],
         }
     },
@@ -161,6 +203,15 @@ export default {
       },
       getColorD (newD) {
         if (newD > 0) return 'red lighten-3';
+      },
+      getColorTIW (deltaconfirmed) {
+        if (deltaconfirmed > 0) return 'blue lighten-3';
+      },
+      getColorRIW (deltarecovered) {
+        if (deltarecovered > 0) return 'green lighten-3';
+      },
+      getColorDIW (deltadeaths) {
+        if (deltadeaths > 0) return 'red lighten-3';
       },
     },
 
