@@ -19,6 +19,8 @@
                         :headers="biharHeaders"
                         :items="districtData"
                         class="elevation-1 pt-2"
+                        :sort-by="['newC']"
+                        :sort-desc="[true]"
                         :loading ="loadingTable" 
                         loading-text="Loading... Please wait"
                         >
@@ -46,6 +48,8 @@
                         :headers="indiaHeaders"
                         :items="indiaData"
                         class="elevation-1 pt-2"
+                        :sort-by="['deltaconfirmed']"
+                        :sort-desc="[true]"
                         :loading ="loadingTable"  
                         loading-text="Loading... Please wait"
                         >
@@ -73,6 +77,8 @@
                         :headers="worldHeaders"
                         :items="worldData"
                         class="elevation-1 pt-2"
+                        :sort-by="['rank']"
+                        :sort-desc="[false]"
                         :loading ="loadingTable"  
                         loading-text="Loading... Please wait"
                         >
@@ -146,13 +152,13 @@ export default {
                     value: 'districtHi',
                     class: 'blue lighten 2 white--text subtitle-2'
                 },
-                { text: 'संक्रमित (कुल)', value: 'totalT', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'संक्रमित (आज)', value: 'newC', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'सक्रिय', value: 'active', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'ठीक हुए', value: 'totalR', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'ठीक हुए (आज)', value: 'newR', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'मृत्यु (कुल)', value: 'totalD', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'मृत्यु (आज)', value: 'newD', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'संक्रमित (कुल)', value: 'totalT', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'संक्रमित (आज)', value: 'newC', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'सक्रिय', value: 'active', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'स्वस्थ हुए (कुल)', value: 'totalR', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'स्वस्थ हुए (आज)', value: 'newR', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'मृत्यु (कुल)', value: 'totalD', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'मृत्यु (आज)', value: 'newD', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
             ],
             indiaHeaders: [
                 {
@@ -165,12 +171,13 @@ export default {
                 { text: 'संक्रमित (कुल)', value: 'confirmed', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'संक्रमित (आज)', value: 'deltaconfirmed', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'सक्रिय', value: 'active', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'ठीक हुए', value: 'recovered', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'ठीक हुए (आज)', value: 'deltarecovered', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'स्वस्थ हुए (कुल)', value: 'recovered', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'स्वस्थ हुए (आज)', value: 'deltarecovered', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'मृत्यु (कुल)', value: 'deaths', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'मृत्यु (आज)', value: 'deltadeaths', class: 'blue lighten 2 white--text subtitle-2' },
             ],
             worldHeaders: [
+                { text : 'सूचीबद्ध (शीर्ष 9 संक्रमित)',sortable: false, value: 'rank', class: 'blue lighten 2 white--text subtitle-2'},
                 {
                     text: 'देश',
                     align: 'start',
@@ -178,13 +185,13 @@ export default {
                     value: 'stateHi',
                     class: 'blue lighten 2 white--text subtitle-2'
                 },
-                { text: 'संक्रमित (कुल)', value: 'confirmed', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'संक्रमित (आज)', value: 'deltaconfirmed', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'सक्रिय', value: 'active', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'ठीक हुए', value: 'recovered', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'ठीक हुए (आज)', value: 'deltarecovered', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'मृत्यु (कुल)', value: 'deaths', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'मृत्यु (आज)', value: 'deltadeaths', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'संक्रमित (कुल)',sortable: false, value: 'confirmed', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'संक्रमित (आज)',sortable: false, value: 'deltaconfirmed', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'सक्रिय',sortable: false, value: 'active', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'स्वस्थ हुए (कुल)',sortable: false, value: 'recovered', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'स्वस्थ हुए (आज)',sortable: false, value: 'deltarecovered', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (कुल)',sortable: false, value: 'deaths', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (आज)',sortable: false, value: 'deltadeaths', class: 'blue lighten 2 white--text subtitle-2' },
             ],
             tab: null,
             items: [
@@ -196,7 +203,7 @@ export default {
     },
     methods: {
       getColorT (newC) {
-        if (newC > 0) return 'blue lighten-3';
+        if (newC > 0) return 'orange lighten-3';
       },
       getColorR (newR) {
         if (newR > 0) return 'green lighten-3';
@@ -205,7 +212,7 @@ export default {
         if (newD > 0) return 'red lighten-3';
       },
       getColorTIW (deltaconfirmed) {
-        if (deltaconfirmed > 0) return 'blue lighten-3';
+        if (deltaconfirmed > 0) return 'orange lighten-3';
       },
       getColorRIW (deltarecovered) {
         if (deltarecovered > 0) return 'green lighten-3';

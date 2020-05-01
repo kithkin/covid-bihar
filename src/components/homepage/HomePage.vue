@@ -25,9 +25,11 @@
                             <v-spacer />
                             <v-switch
                             v-model="$vuetify.theme.dark"
-                            label="Dark"
                             class="mt-5"
                             />
+                            <span>
+                                Dark
+                            </span>
                         </v-app-bar>
                     <v-btn
                         v-scroll="onScroll"
@@ -82,6 +84,7 @@
                             </v-row>
                         </v-container>
                     </v-content>
+                    <footer-card />
                 </v-app>
             </div>
     </div>
@@ -91,6 +94,7 @@
 import MainCard from './components/MainCard.vue';
 import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
+import FooterCard from './../common/components/FooterCard.vue';
 const map = require('./../mapbuild/map').default;
 const tooltip = require('./../mapbuild/tooltip').default;
 
@@ -100,7 +104,8 @@ export default {
         TableCard,
         MainCard,
         usMap: map,
-        tooltip: tooltip
+        tooltip: tooltip,
+        FooterCard
     },
     data() {
         return {

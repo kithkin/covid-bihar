@@ -4,10 +4,10 @@
         <v-list-item-group v-model="item">
             <v-list dense>
                 <v-list-item
-                color="grey"
+                color="orange"
                 >
                     <v-list-item-icon>
-                        <v-icon color="grey">fas fa-user-md</v-icon>
+                        <v-icon color="orange">fas fa-user-md</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
                         <v-list-item-title class="text-left font-weight-medium">संक्रमित</v-list-item-title>
