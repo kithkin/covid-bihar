@@ -87,7 +87,7 @@ export default {
                 {
                     district: 'Patna',
                     confirmed: 44,
-                    newcases: 2,
+                    newcases: 0,
                     active: 38,
                     recovered: 6,
                     newrecovered: 1,
@@ -110,9 +110,11 @@ export default {
     },
     methods: {
       getColor (newcases) {
-        if (newcases <= 10) return 'blue lighten-3'
-        else if (newcases > 10 && newcases <= 50) return 'orange'
-        else return 'red'
+          if(newcases >= 0) {
+            if (newcases > 0) return 'blue lighten-3'
+            // else if (newcases > 10 && newcases <= 50) return 'orange'
+            else return 'no-data-text'
+          }
       },
     },
 
