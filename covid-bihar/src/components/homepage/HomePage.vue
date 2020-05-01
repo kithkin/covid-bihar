@@ -39,7 +39,7 @@
                                         </v-col>
                                     </v-row>
                                     <v-row>
-                                        <v-col sm="12">
+                                        <v-col sm="12" class="text-center">
                                              <div id="holder">
                                                 <div class="mapHolder">
                                                     <us-map
@@ -129,7 +129,7 @@ export default {
 #holder {
   position: relative;
   height: 300px;
-  width: 500px;
+  width: 420px;
   margin: auto;
 }
 .mapHolder {
