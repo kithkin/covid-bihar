@@ -17,14 +17,16 @@
                         >
                             <v-app-bar-nav-icon
                             @click.stop="primaryDrawer.model = !primaryDrawer.model"
+                            class="ml-1"
                             />
-                            <v-toolbar-title>COVID19</v-toolbar-title>
+                            <v-toolbar-side-icon class="pt-4">
+                                <v-img :src="require('@/assets/logo.png')" height="60" width= "190"/>
+                            </v-toolbar-side-icon>  
                             <v-spacer />
                             <v-switch
                             v-model="$vuetify.theme.dark"
-                            primary
                             label="Dark"
-                            align="center"
+                            class="mt-5"
                             />
                         </v-app-bar>
                     <v-btn
