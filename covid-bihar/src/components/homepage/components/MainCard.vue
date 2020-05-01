@@ -46,7 +46,7 @@
                 color="red"
                 >
                     <v-list-item-icon>
-                        <v-icon color="red">fas fa-ambulance</v-icon>
+                        <v-icon color="red">fas fa-heart-broken</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
                         <v-list-item-title class="text-left font-weight-medium">Death</v-list-item-title>

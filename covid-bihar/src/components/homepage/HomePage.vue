@@ -15,6 +15,28 @@
         </div>
             <div>
                 <v-app id="covid">
+                    <v-navigation-drawer
+                        v-model="primaryDrawer.model"
+                        :clipped="primaryDrawer.clipped"
+                        app
+                        />
+
+                        <v-app-bar
+                        :clipped-left="primaryDrawer.clipped"
+                        app
+                        >
+                            <v-app-bar-nav-icon
+                            @click.stop="primaryDrawer.model = !primaryDrawer.model"
+                            />
+                            <v-toolbar-title>COVID19</v-toolbar-title>
+                            <v-spacer />
+                            <v-switch
+                            v-model="$vuetify.theme.dark"
+                            primary
+                            label="Dark"
+                            align="center"
+                            />
+                        </v-app-bar>
                     <v-content>
                         <v-container
                         class="fill-height"
@@ -60,6 +82,11 @@ export default {
     },
     data() {
         return {
+            primaryDrawer: {
+                model: false,
+                type: 'default (no property)',
+                clipped: true,
+            },
             covidData: [],
             statesData: undefined,
             currentState: undefined
