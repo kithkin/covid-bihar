@@ -11,6 +11,8 @@
 
                         <v-app-bar
                         :clipped-left="primaryDrawer.clipped"
+                        color="blue lighten-2"
+                        dark
                         app
                         >
                             <v-app-bar-nav-icon
@@ -25,6 +27,19 @@
                             align="center"
                             />
                         </v-app-bar>
+                    <v-btn
+                        v-scroll="onScroll"
+                        v-show="fab"
+                        fab
+                        dark
+                        fixed
+                        bottom
+                        right
+                        color="primary"
+                        @click="toTop"
+                    >
+                        <v-icon>keyboard_arrow_up</v-icon>
+                    </v-btn>
                     <v-content>
                         <v-container
                         class="fill-height"
@@ -57,7 +72,7 @@
                                     </v-row> -->
                                     <v-row>
                                         <v-col sm="12">
-                                            <table-card :districtData="districtData"></table-card>
+                                            <table-card :districtData="districtData" :loadingTable="loadingTable"></table-card>
                                         </v-col>
                                     </v-row>
                                 </v-col>
@@ -94,7 +109,9 @@ export default {
             covidData: [],
             statesData: undefined,
             currentState: undefined,
-            districtData: []
+            districtData: [],
+            loadingTable: true,
+            fab: false
         }
     },
     mounted() {
@@ -103,15 +120,16 @@ export default {
             this.covidData = res;
         })
 
-        serviceData.getDistrictData()
-        .then(res => {
-            console.log(res);
-            // this.districtData = res;
-        })
+        // serviceData.getDistrictData()
+        // .then(res => {
+        //     console.log(res);
+        //     // this.districtData = res;
+        // })
 
         serviceData.dynamicData()
         .then(res => {
-            this.districtData = res;
+            this.districtData = res.tableData;
+            this.loadingTable = res.loading;
         })
     },
     computed: {
@@ -126,6 +144,14 @@ export default {
         onStateDeselected: function(stateCode) {
         this.currentState = stateCode;
         this.currentState = undefined;
+        },
+        onScroll (e) {
+            if (typeof window === 'undefined') return
+            const top = window.pageYOffset ||   e.target.scrollTop || 0
+            this.fab = top > 20
+        },
+        toTop () {
+            this.$vuetify.goTo(0);
         }
     }
 }

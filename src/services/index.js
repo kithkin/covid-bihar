@@ -143,7 +143,14 @@ const dynamicData = async() => {
         ...totalCase
     }));
 
-    return mergeByName(total, recovered, death);
+    const tableData = mergeByName(total, recovered, death);
+
+    const covidDataObj = { 
+        loading: false,
+        tableData: tableData
+    }
+
+    return covidDataObj;
 }
 
 export default {
