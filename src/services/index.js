@@ -132,25 +132,31 @@ const getDeath = async() => {
 
 const dynamicData = async() => {
 
-    const total = await getTotal();
-    const recovered = await getRecovered();
-    const death = await getDeath();
-    
-    const mergeByName = (a1, a2, a3) =>
-    a1.map(totalCase => ({
-        ...a2.find((rDistrictwise) => (rDistrictwise.district == totalCase.district)),
-        ...a3.find((dDistrictwise) => (dDistrictwise.district == totalCase.district)),
-        ...totalCase
-    }));
+    try {
+        const total = await getTotal();
+        const recovered = await getRecovered();
+        const death = await getDeath();
+        
+        const mergeByName = (a1, a2, a3) =>
+        a1.map(totalCase => ({
+            ...a2.find((rDistrictwise) => (rDistrictwise.district == totalCase.district)),
+            ...a3.find((dDistrictwise) => (dDistrictwise.district == totalCase.district)),
+            ...totalCase
+        }));
 
-    const tableData = mergeByName(total, recovered, death);
+        const tableData = mergeByName(total, recovered, death);
+        tableData.pop();
+        const covidDataObj = { 
+            loading: false,
+            tableData: tableData
+        }
 
-    const covidDataObj = { 
-        loading: false,
-        tableData: tableData
+        return covidDataObj;
     }
-
-    return covidDataObj;
+    catch(error){
+        console.error(error);
+    }
+    
 }
 
 const getIndiaData = async() => {
