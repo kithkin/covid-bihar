@@ -11,7 +11,7 @@
         >
             <div class="text-center">
                 <v-list-item-avatar>
-                <img src="https://randomuser.me/api/portraits/men/81.jpg">
+                <img src="./../../../assets/favicon.png">
                 </v-list-item-avatar>
             </div>
 
