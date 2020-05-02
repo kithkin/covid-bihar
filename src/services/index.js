@@ -254,6 +254,16 @@ const getDistrictZones = async() => {
     }
 }
 
+const getBiharDaily = async() => {
+    try {
+        const resp = await axios.get('https://api.covid19india.org/states_daily.json');
+        console.log(resp.data)
+    }
+    catch (error) {
+        console.error(error);    
+    }
+}
+
 export default {
     getAllData,
     getTotal,
@@ -263,5 +273,6 @@ export default {
     getBiharData,
     getIndiaData,
     getWorldData,
-    getDistrictZones
+    getDistrictZones,
+    getBiharDaily
 }

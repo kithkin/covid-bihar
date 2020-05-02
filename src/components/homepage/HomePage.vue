@@ -57,7 +57,7 @@
                                             <main-card :covid-data="data"></main-card>
                                         </v-col>
                                     </v-row>
-                                    <!-- <v-row>
+                                    <v-row>
                                         <v-col sm="12" class="text-center">
                                              <div id="holder">
                                                 <div class="mapHolder">
@@ -74,7 +74,7 @@
                                                 </div>
                                             </div>
                                         </v-col>
-                                    </v-row> -->
+                                    </v-row>
                                     <v-row>
                                         <v-col sm="12">
                                             <table-card :districtData="districtData" :loadingTable="loadingTable" :indiaData="indiaData" :worldData="worldData"></table-card>
@@ -95,16 +95,16 @@ import MainCard from './components/MainCard.vue';
 import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
 import FooterCard from './../common/components/FooterCard.vue';
-// const map = require('./../mapbuild/map').default;
-// const tooltip = require('./../mapbuild/tooltip').default;
+const map = require('./../mapbuild/map').default;
+const tooltip = require('./../mapbuild/tooltip').default;
 
 export default {
     name: 'HomePage',
     components: {
         TableCard,
         MainCard,
-        // usMap: map,
-        // tooltip: tooltip,
+        usMap: map,
+        tooltip: tooltip,
         FooterCard
     },
     data() {
