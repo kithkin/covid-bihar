@@ -16,8 +16,51 @@ Links:
 
 <script>
 
+const distMap = {
+"209":"Araria",
+"240":"Arwal",
+"235":"Aurangabad",
+"225":"Banka",
+"222":"Begusarai",
+"224":"Bhagalpur",
+"231":"Bhojpur",
+"232":"Buxar",
+"215":"Darbhanga",
+"204":"East Champaran",
+"236":"Gaya",
+"217":"Gopalganj",
+"238":"Jamui",
+"239":"Jehanabad",
+"233":"Kaimur",
+"212":"Katihar",
+"223":"Khagaria",
+"210":"Kishanganj",
+"227":"Lakhisarai",
+"213":"Madhepura",
+"207":"Madhubani",
+"226":"Munger",
+"216":"Muzaffarpur",
+"229":"Nalanda",
+"237":"Nawada",
+"230":"Patna",
+"211":"Purnia",
+"234":"Rohtas",
+"214":"Saharsa",
+"221":"Samastipur",
+"219":"Saran",
+"228":"Sheikhpura",
+"205":"Sheohar",
+"206":"Sitamarhi",
+"218":"Siwan",
+"208":"Supaul",
+"220":"Vaishali",
+"203":"West Champaran",
+}
+
 const d3 = require('d3');
 const topojson = require('topojson');
+import serviceData from './../../services/index.js';
+
 
 const json = require('./static/data/bihar.json');
 
@@ -37,12 +80,31 @@ export default {
 
     var func = function(us) {
       var g = svg.append('g');
-        g
+      serviceData.getDistrictZones()
+        .then(zoneData => {
+                  g
           .selectAll('.state')
           .data(topojson.feature(us, us.objects.Bihar).features)
           .enter()
           .append("path")
-          .attr("class", "state")
+          .attr("class", function(d){
+            var zoneClass = "";
+            //console.log(zoneData);
+            for(var i=0;i<zoneData.length;i++){
+            if(distMap[d.properties.Dist_Code] == zoneData[i].district){
+              if(zoneData[i].zone == "Green"){
+                  zoneClass = "stateG";
+              }else if(zoneData[i].zone == "Orange"){
+                  zoneClass = "stateO";
+              }else{
+                  zoneClass = "stateR";
+              }
+              break;
+            }
+          }
+            //console.log(zoneClass);
+            return zoneClass;
+          })
           .attr("d", path)
           .on('mouseover', function(d) {
             v.$emit('stateSelected', d.properties.Dist_Name)
@@ -50,6 +112,7 @@ export default {
           .on('mouseout', function(d) {
             v.$emit('stateDeselected', d.properties.Dist_Name)
           })
+    });
       g.attr('transform', 'scale(1.0)')
     };
 
@@ -63,6 +126,18 @@ export default {
 <style>
 .state {
   fill: #ccc;
+  stroke: #fff;
+}
+.stateG {
+  fill: #008000;
+  stroke: #fff;
+}
+.stateR {
+  fill: #FF0000	;
+  stroke: #fff;
+}
+.stateO {
+  fill: #FFA500;
   stroke: #fff;
 }
 .state:hover {

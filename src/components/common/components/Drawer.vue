@@ -1,7 +1,7 @@
 <template>
     <v-navigation-drawer
-    v-model="primaryDrawer.model"
-    :clipped="primaryDrawer.clipped"
+    v-model="model"
+    clipped="clipped"
     app
     >
     </v-navigation-drawer>
@@ -10,14 +10,6 @@
 <script>
   export default {
     name: 'Drawer',
-    data() {
-        return {
-            primaryDrawer: {
-                model: false,
-                type: 'default (no property)',
-                clipped: true,
-            }
-        }
-    },
+    props: ['model', 'clipped'],
   }
 </script>
