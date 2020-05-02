@@ -96,9 +96,14 @@ const getRecovered = async() => {
                 var obj = {};
                 var currentline=lines[i].split(",");
           
-                for(var j=0;j<headers.length;j++){
-                    obj[headers[j]] = currentline[j];
-                }
+                // for(var j=0;j<headers.length;j++){
+                //     obj[headers[j]] = currentline[j];
+                // }
+
+                obj[headers[0]] = currentline[0];   //district
+                obj[headers[1]] = currentline[1];   //districtHi
+                obj[headers[headers.length-3]] = currentline[headers.length-3]; //totalR
+                obj[headers[headers.length-2]] = currentline[headers.length-2]; //newR
           
                 result.push(obj);
             }
@@ -124,9 +129,15 @@ const getTotal = async() => {
                 var obj = {};
                 var currentline=lines[i].split(",");
           
-                for(var j=0;j<headers.length;j++){
-                    obj[headers[j]] = currentline[j];
-                }
+                // for(var j=0;j<headers.length;j++){
+                //     obj[headers[j]] = currentline[j];
+                // }
+
+                obj[headers[0]] = currentline[0];   //district
+                obj[headers[1]] = currentline[1];   //districtHi
+                obj[headers[headers.length-4]] = currentline[headers.length-4]; //totalT
+                obj[headers[headers.length-3]] = currentline[headers.length-3]; //newC
+                obj[headers[headers.length-2]] = currentline[headers.length-2]; //active
           
                 result.push(obj);
             }
@@ -152,9 +163,14 @@ const getDeath = async() => {
                 var obj = {};
                 var currentline=lines[i].split(",");
           
-                for(var j=0;j<headers.length;j++){
-                    obj[headers[j]] = currentline[j];
-                }
+                // for(var j=0;j<headers.length;j++){
+                //     obj[headers[j]] = currentline[j];
+                // }
+
+                obj[headers[0]] = currentline[0];   //district
+                obj[headers[1]] = currentline[1];   //districtHi
+                obj[headers[headers.length-3]] = currentline[headers.length-3]; //totalD
+                obj[headers[headers.length-2]] = currentline[headers.length-2]; //newD
           
                 result.push(obj);
             }
