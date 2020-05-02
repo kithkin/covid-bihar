@@ -51,6 +51,9 @@
                             <v-row 
                             align="center"
                             justify="center">
+                                <v-col sm="12">
+                                    <div class="text-center pink white--text py-1">source: MOHFW</div>
+                                </v-col>
                                 <v-col cols="12">
                                     <v-row>
                                         <v-col sm="4" v-for="(data,index) in covidData" :key="'data_' + data + `${index}`">
