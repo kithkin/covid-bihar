@@ -1,38 +1,43 @@
 import axios from 'axios';
 
 const stateHindi = {
-    "Andaman and Nicobar Islands" : "अंडमान व नोकोबार द्वीप समूह",
-    "Andhra Pradesh" : "आंध्र प्रदेश",
-    "Arunachal Pradesh" : "अरुणाचल प्रदेश",
-    "Assam" : "आसाम",
-    "Bihar" : "बिहार",
-    "Chhattisgarh" : "छत्तीसगढ़",
-    "Delhi" : "दिल्ली",
-    "Goa" : "गोवा",
-    "Gujarat" : "गुजरात",
-    "Haryana" : "हरियाणा",
-    "Himachal Pradesh" : "हिमाचल प्रदेश",
-    "Jharkhand" : "झारखंड",
-    "Karnataka" : "कर्नाटक",
-    "Kerala" : "केरल",
-    "Madhya Pradesh" : "मध्य प्रदेश",
-    "Maharashtra" : "महाराष्ट्र",
-    "Manipur" : "मणिपुर",
-    "Meghalaya" : "मेघालय",
-    "Mizoram" : "मिजोरम",
-    "Odisha" : "उड़ीसा",
-    "Puducherry" : "पुडुचेरी",
-    "Punjab" : "पंजाब",
-    "Rajasthan" : "राजस्थान",
-    "Tamil Nadu" : "तमिल नाडु",
-    "Telangana" : "तेलंगाना",
-    "Tripura" : "त्रिपुरा",
-    "Chandigarh" : "चंडीगढ़",
-    "Jammu and Kashmir" : "जम्मू और कश्मीर",
-    "Ladakh" : "लद्दाख",
-    "Uttar Pradesh" : "उत्तर प्रदेश",
-    "Uttarakhand" : "उत्तराखंड",
-    "West Bengal" : "पश्चिम बंगाल"
+    "AN" : "अंडमान व नोकोबार द्वीप समूह",
+    "AP" : "आंध्र प्रदेश",
+    "AR" : "अरुणाचल प्रदेश",
+    "AS" : "आसाम",
+    "BR" : "बिहार",
+    "CT" : "छत्तीसगढ़",
+    "DL" : "दिल्ली",
+    "GA" : "गोवा",
+    "GJ" : "गुजरात",
+    "HR" : "हरियाणा",
+    "HP" : "हिमाचल प्रदेश",
+    "JH" : "झारखंड",
+    "KA" : "कर्नाटक",
+    "KL" : "केरल",
+    "MP" : "मध्य प्रदेश",
+    "MH" : "महाराष्ट्र",
+    "MN" : "मणिपुर",
+    "ML" : "मेघालय",
+    "MZ" : "मिजोरम",
+    "NL" : "नगालैंड",
+    "OR" : "उड़ीसा",
+    "PY" : "पुडुचेरी",
+    "PB" : "पंजाब",
+    "RJ" : "राजस्थान",
+    "SK" : "सिक्किम",
+    "TN" : "तमिलनाडु",
+    "TG" : "तेलंगाना",
+    "TR" : "त्रिपुरा",
+    "CH" : "चंडीगढ़",
+    "DN" : "दादरा और नगर हवेली",
+    "DD" : "दमन और दीव",
+    "JK" : "जम्मू और कश्मीर",
+    "LA" : "लद्दाख",
+    "LD" : "लक्षद्वीप",
+    "UP" : "उत्तर प्रदेश",
+    "UT" : "उत्तराखंड",
+    "WB" : "पश्चिम बंगाल"
 }
 
 const getAllData = async() => {
@@ -230,7 +235,7 @@ const getIndiaData = async() => {
         let stateHi = '';
         statewiseData.forEach( (stateObj) => {
             for(var key in stateHindi) {
-                if(key === stateObj.state) {
+                if(key === stateObj.statecode) {
                     stateHi = stateHindi[key];
                 }
             }
@@ -254,6 +259,16 @@ const getDistrictZones = async() => {
     }
 }
 
+const getBiharDaily = async() => {
+    try {
+        const resp = await axios.get('https://api.covid19india.org/states_daily.json');
+        console.log(resp.data)
+    }
+    catch (error) {
+        console.error(error);    
+    }
+}
+
 export default {
     getAllData,
     getTotal,
@@ -263,5 +278,6 @@ export default {
     getBiharData,
     getIndiaData,
     getWorldData,
-    getDistrictZones
+    getDistrictZones,
+    getBiharDaily
 }

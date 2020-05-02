@@ -19,9 +19,9 @@
                             @click.stop="primaryDrawer.model = !primaryDrawer.model"
                             class="ml-1"
                             />
-                            <v-toolbar-side-icon class="pt-4">
+                            <div class="pt-4">
                                 <v-img :src="require('@/assets/logo.png')" height="60" width= "190"/>
-                            </v-toolbar-side-icon>  
+                            </div>  
                             <v-spacer />
                             <v-switch
                             v-model="$vuetify.theme.dark"
@@ -57,7 +57,7 @@
                                             <main-card :covid-data="data"></main-card>
                                         </v-col>
                                     </v-row>
-                                    <v-row>
+                                    <!-- <v-row>
                                         <v-col sm="12" class="text-center">
                                              <div id="holder">
                                                 <div class="mapHolder">
@@ -74,17 +74,17 @@
                                                 </div>
                                             </div>
                                         </v-col>
-                                    </v-row>
+                                    </v-row> -->
                                     <v-row>
                                         <v-col sm="12">
                                             <table-card :districtData="districtData" :loadingTable="loadingTable" :indiaData="indiaData" :worldData="worldData"></table-card>
                                         </v-col>
                                     </v-row>
-                                    <v-row>
+                                    <!-- <v-row>
                                         <v-col>
                                             <daily-basis-data-chart />
                                         </v-col>
-                                    </v-row>
+                                    </v-row> -->
                                 </v-col>
                             </v-row>
                         </v-container>
@@ -100,7 +100,7 @@ import MainCard from './components/MainCard.vue';
 import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
 import FooterCard from './../common/components/FooterCard.vue';
-import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
+// import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
 // const map = require('./../mapbuild/map').default;
 // const tooltip = require('./../mapbuild/tooltip').default;
 
@@ -112,7 +112,7 @@ export default {
         // usMap: map,
         // tooltip: tooltip,
         FooterCard,
-        DailyBasisDataChart
+        // DailyBasisDataChart
     },
     data() {
         return {

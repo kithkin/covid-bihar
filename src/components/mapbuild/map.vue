@@ -6,13 +6,12 @@ Based on:
   http://bl.ocks.org/rveciana/a2a1c21ca1c71cd3ec116cc911e5fce9
   http://bl.ocks.org/mapsam/6083585
 
-
 Links:
 
 -->
 
 <template>
-  <svg width="100%" height="auto"></svg>
+  <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 300 210" pointer-events="auto"></svg>
 </template>
 
 <script>
@@ -51,7 +50,7 @@ export default {
           .on('mouseout', function(d) {
             v.$emit('stateDeselected', d.properties.Dist_Name)
           })
-      g.attr('transform', 'scale(0.75)')
+      g.attr('transform', 'scale(1.0)')
     };
 
     func(json);
