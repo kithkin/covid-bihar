@@ -267,8 +267,13 @@ const getIndiaData = async() => {
 const getDistrictZones = async() => {
     try {
         const resp = await axios.get('https://api.covid19india.org/zones.json');
-        const zones = resp.data.zones;
-        console.log(zones);
+        var result = [];
+        resp.data.zones.forEach(res => {
+            if(res.state == "Bihar") {
+                result.push(res);
+            }
+        })
+        return result
     }
     catch (error) {
         console.error(error);    
@@ -278,7 +283,7 @@ const getDistrictZones = async() => {
 const getBiharDaily = async() => {
     try {
         const resp = await axios.get('https://api.covid19india.org/states_daily.json');
-        console.log(resp.data)
+        console.log("Here: ", resp.data)
     }
     catch (error) {
         console.error(error);    
