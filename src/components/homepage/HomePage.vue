@@ -57,7 +57,7 @@
                                             <main-card :covid-data="data"></main-card>
                                         </v-col>
                                     </v-row>
-                                    <!-- <v-row>
+                                    <v-row>
                                         <v-col sm="12" class="text-center">
                                              <div id="holder">
                                                 <div class="mapHolder">
@@ -74,10 +74,15 @@
                                                 </div>
                                             </div>
                                         </v-col>
-                                    </v-row> -->
+                                    </v-row>
                                     <v-row>
                                         <v-col sm="12">
                                             <table-card :districtData="districtData" :loadingTable="loadingTable" :indiaData="indiaData" :worldData="worldData"></table-card>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col>
+                                            <daily-basis-data-chart />
                                         </v-col>
                                     </v-row>
                                 </v-col>
@@ -95,6 +100,7 @@ import MainCard from './components/MainCard.vue';
 import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
 import FooterCard from './../common/components/FooterCard.vue';
+import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
 // const map = require('./../mapbuild/map').default;
 // const tooltip = require('./../mapbuild/tooltip').default;
 
@@ -105,7 +111,8 @@ export default {
         MainCard,
         // usMap: map,
         // tooltip: tooltip,
-        FooterCard
+        FooterCard,
+        DailyBasisDataChart
     },
     data() {
         return {
