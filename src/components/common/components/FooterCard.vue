@@ -8,12 +8,13 @@
         class="blue lighten-2 py-4 text-center white--text"
         cols="12"
         >
-          <strong>COVID19</strong>
+          <strong>कोविड-बिहार</strong>
           <div class="body-1 font-weight-light pt-3 text-center">
-              &copy; {{ new Date().getFullYear() }}, made with
-              <v-icon size="18" color='purple darken-2'>
+              &copy; {{ new Date().getFullYear() }}, 
+              <v-icon size="20" color='red darken-2'>
                 mdi-heart
               </v-icon>
+              बिहारियों के लिए
           </div>
         </v-col>
       </v-row>

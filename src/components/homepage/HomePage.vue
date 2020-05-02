@@ -30,7 +30,7 @@
                     align="center"
                     justify="center">
                         <v-col sm="12" class="pb-0 pt-2">
-                            <div class="text-right body-2">Last Updated: 24/04/2020 12:00 PM</div>
+                            <div class="text-right body-2">अंतिम अपडेट: {{utime}}</div>
                         </v-col>
                         <v-col cols="12">
                             <v-row>
@@ -113,7 +113,8 @@ export default {
             indiaData: [],
             worldData: [],
             loadingTable: true,
-            fab: false
+            fab: false,
+            utime: '',
         }
     },
     mounted() {
@@ -137,6 +138,7 @@ export default {
         serviceData.getIndiaData()
         .then(res => {
             this.indiaData = res;
+            this.utime = res[13].lastupdatedtime;
         })
 
         serviceData.getWorldData()
