@@ -9,7 +9,7 @@
         cols="12"
         >
           <strong>कोविड-बिहार</strong>
-          <div class="body-1 font-weight-light pt-3 text-center">
+          <div class="body-1 font-weight-light pt-2 text-center">
               &copy; {{ new Date().getFullYear() }}, 
               <v-icon size="20" color='red darken-2'>
                 mdi-heart
