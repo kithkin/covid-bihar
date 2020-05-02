@@ -22,9 +22,8 @@
 
 #tooltipPositioner {
   position: relative;
-  left: 50%;
-  top: 350px;
-  width: 240px;
+  left: 75%;
+  top: 100px;
 }
 
 #tooltipContainer {
