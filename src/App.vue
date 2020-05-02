@@ -8,6 +8,14 @@
 
 export default {
   name: 'App',
+  watch: {
+    // eslint-disable-next-line no-unused-vars
+    '$route' (to, from) {
+      document.title = to.meta.title || 'Covid19 | Bihar | Coronavirus trending data of Bihar';
+      const link = document.querySelector("[rel='icon']");
+      link.setAttribute('href',to.meta.icon);
+    }
+  }
 }
 </script>
 
