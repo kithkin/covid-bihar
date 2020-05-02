@@ -164,6 +164,7 @@ export default {
 
         serviceData.getDistrictZones()
         .then(res => {
+            console.log("Zones: ", res)
             return res;
         })
     },
