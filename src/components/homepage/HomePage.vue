@@ -1,103 +1,84 @@
 <template>
     <div class="homepage">
-        
-            <div>
-                <v-app id="covid">
-                    <v-navigation-drawer
-                        v-model="primaryDrawer.model"
-                        :clipped="primaryDrawer.clipped"
-                        app
-                        />
+        <v-app id="covid">
+            <!-- drawer component -->
+            <drawer></drawer>
 
-                        <v-app-bar
-                        :clipped-left="primaryDrawer.clipped"
-                        color="blue lighten-2"
-                        dark
-                        app
-                        >
-                            <v-app-bar-nav-icon
-                            @click.stop="primaryDrawer.model = !primaryDrawer.model"
-                            class="ml-1"
-                            />
-                            <div class="pt-4">
-                                <v-img :src="require('@/assets/logo.png')" height="60" width= "190"/>
-                            </div>  
-                            <v-spacer />
-                            <v-switch
-                            v-model="$vuetify.theme.dark"
-                            class="mt-5"
-                            />
-                            <span>
-                                Dark
-                            </span>
-                        </v-app-bar>
-                    <v-btn
-                        v-scroll="onScroll"
-                        v-show="fab"
-                        fab
-                        dark
-                        fixed
-                        bottom
-                        right
-                        color="primary"
-                        @click="toTop"
-                    >
-                        <v-icon>keyboard_arrow_up</v-icon>
-                    </v-btn>
-                    <v-content>
-                        <v-container
-                        class="fill-height"
-                        >
-                            <v-row 
-                            align="center"
-                            justify="center">
-                                <v-col sm="12">
-                                    <div class="text-center pink white--text py-1">source: MOHFW</div>
-                                </v-col>
-                                <v-col cols="12">
-                                    <v-row>
-                                        <v-col sm="4" v-for="(data,index) in covidData" :key="'data_' + data + `${index}`">
-                                            <main-card :covid-data="data"></main-card>
-                                        </v-col>
-                                    </v-row>
-                                    <v-row>
-                                        <v-col sm="12" class="text-center">
-                                             <div id="holder">
-                                                <div class="mapHolder">
-                                                    <tooltip
-                                                        v-if="currentState"
-                                                        :title="currentState.Name"
-                                                        :description="currentStateDescription"
-                                                    />
-                                                    <us-map
-                                                        v-on:stateSelected="onStateSelected"
-                                                        v-on:stateDeselected="onStateDeselected"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </v-col>
-                                    </v-row>
-                                    <v-row>
-                                        <v-col sm="12">
-                                            <table-card :districtData="districtData" :loadingTable="loadingTable" :indiaData="indiaData" :worldData="worldData"></table-card>
-                                        </v-col>
-                                    </v-row>
-                                    <!-- <v-row>
-                                        <v-col>
-                                            <daily-basis-data-chart />
-                                        </v-col>
-                                    </v-row> -->
+            <!-- app bar component -->
+            <app-bar></app-bar>
+
+            <!-- back to top component -->
+            <v-btn
+                v-scroll="onScroll"
+                v-show="fab"
+                fab
+                dark
+                fixed
+                bottom
+                right
+                color="primary"
+                @click="toTop"
+            >
+                <v-icon>keyboard_arrow_up</v-icon>
+            </v-btn>
+            <!-- homepage content -->
+            <v-content>
+                <v-container
+                class="fill-height"
+                >
+                    <v-row 
+                    align="center"
+                    justify="center">
+                        <v-col sm="12" class="pb-0 pt-2">
+                            <div class="text-right body-2">Last Updated: 24/04/2020 12:00 PM</div>
+                        </v-col>
+                        <v-col cols="12">
+                            <v-row>
+                                <v-col sm="4" v-for="(data,index) in covidData" :key="'data_' + data + `${index}`">
+                                    <main-card :covid-data="data"></main-card>
                                 </v-col>
                             </v-row>
-                        </v-container>
-                    </v-content>
-                    <footer-card />
-                </v-app>
-            </div>
+                            <v-row>
+                                <v-col sm="12" class="text-center">
+                                        <div id="holder">
+                                        <div class="mapHolder">
+                                            <tooltip
+                                                v-if="currentState"
+                                                :title="currentState.Name"
+                                                :description="currentStateDescription"
+                                            />
+                                            <us-map
+                                                v-on:stateSelected="onStateSelected"
+                                                v-on:stateDeselected="onStateDeselected"
+                                            />
+                                        </div>
+                                    </div>
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col sm="12">
+                                    <table-card :districtData="districtData" :loadingTable="loadingTable" :indiaData="indiaData" :worldData="worldData"></table-card>
+                                </v-col>
+                            </v-row>
+                            <!-- <v-row>
+                                <v-col>
+                                    <daily-basis-data-chart />
+                                </v-col>
+                            </v-row> -->
+                        </v-col>
+                    </v-row>
+                </v-container>
+            </v-content>
+
+            <!-- footer component -->
+            <footer-card />
+        </v-app>
     </div>
 </template>
 
 <script>
+import AppBar from './../common/components/AppBar.vue';
+import Drawer from './../common/components/Drawer.vue';
 import MainCard from './components/MainCard.vue';
 import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
@@ -109,6 +90,8 @@ const tooltip = require('./../mapbuild/tooltip').default;
 export default {
     name: 'HomePage',
     components: {
+        AppBar,
+        Drawer,
         TableCard,
         MainCard,
         usMap: map,
