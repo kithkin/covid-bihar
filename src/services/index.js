@@ -243,6 +243,17 @@ const getIndiaData = async() => {
     }
 }
 
+const getDistrictZones = async() => {
+    try {
+        const resp = await axios.get('https://api.covid19india.org/zones.json');
+        const zones = resp.data.zones;
+        console.log(zones);
+    }
+    catch (error) {
+        console.error(error);    
+    }
+}
+
 export default {
     getAllData,
     getTotal,
@@ -251,5 +262,6 @@ export default {
     getDistrictData,
     getBiharData,
     getIndiaData,
-    getWorldData
+    getWorldData,
+    getDistrictZones
 }

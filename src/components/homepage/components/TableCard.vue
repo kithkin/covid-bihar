@@ -22,7 +22,7 @@
                         :sort-by="['newC']"
                         :sort-desc="[true]"
                         :loading ="loadingTable" 
-                        loading-text="Loading... Please wait"
+                        loading-text="प्रकिरिया में... कृपया प्रतीक्षा कीजिये!"
                         >
                             <template v-slot:item.newC="{ item }">
                                 <div v-if="item.newC > 0">
@@ -51,7 +51,7 @@
                         :sort-by="['deltaconfirmed']"
                         :sort-desc="[true]"
                         :loading ="loadingTable"  
-                        loading-text="Loading... Please wait"
+                        loading-text="प्रकिरिया में... कृपया प्रतीक्षा कीजिये!"
                         >
                             <template v-slot:item.deltaconfirmed="{ item }">
                                 <div v-if="item.deltaconfirmed > 0">
@@ -80,7 +80,7 @@
                         :sort-by="['rank']"
                         :sort-desc="[false]"
                         :loading ="loadingTable"  
-                        loading-text="Loading... Please wait"
+                        loading-text="प्रकिरिया में... कृपया प्रतीक्षा कीजिये!"
                         >
                             <template v-slot:item.deltaconfirmed="{ item }">
                                 <div v-if="item.deltaconfirmed > 0">
@@ -177,7 +177,7 @@ export default {
                 { text: 'मृत्यु (आज)', value: 'deltadeaths', class: 'blue lighten 2 white--text subtitle-2' },
             ],
             worldHeaders: [
-                { text : 'सूचीबद्ध (शीर्ष 9 संक्रमित)',sortable: false, value: 'rank', class: 'blue lighten 2 white--text subtitle-2'},
+                { text : 'सूचीबद्ध (शीर्ष 9 संक्रमित)', value: 'rank', class: 'blue lighten 2 white--text subtitle-2'},
                 {
                     text: 'देश',
                     align: 'start',

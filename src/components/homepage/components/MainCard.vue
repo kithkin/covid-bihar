@@ -13,7 +13,7 @@
                         <v-list-item-title class="text-left font-weight-medium">संक्रमित</v-list-item-title>
                     </v-list-item-content>
                     <div v-if="covidData.total">
-                        {{ covidData.total }}
+                        {{ covidData.total }} (<span style="color: orange;">{{covidData.new > 0 ? '+' + covidData.new : 'अनुपलब्ध'}}</span>)
                     </div>
                 </v-list-item>
                 <v-list-item
@@ -26,7 +26,7 @@
                         <v-list-item-title class="text-left font-weight-medium">सक्रिय</v-list-item-title>
                     </v-list-item-content>
                     <div v-if="covidData.active">
-                        {{ covidData.active }}
+                        {{ covidData.active }} (<span style="color: #4599f3">{{covidData.active_new == 0 ? 'अनुपलब्ध' : covidData.active_new > 0 ? '+' + covidData.active_new : '-' + covidData.active_new}}</span>)
                     </div>
                 </v-list-item>
                 <v-list-item
@@ -39,7 +39,7 @@
                         <v-list-item-title class="text-left font-weight-medium">स्वस्थ</v-list-item-title>
                     </v-list-item-content>
                     <div v-if="covidData.recovered">
-                        {{ covidData.recovered }}
+                        {{ covidData.recovered }} (<span style="color: green;">{{covidData.recovered_new > 0 ? '+' + covidData.recovered_new : 'अनुपलब्ध'}}</span>)
                     </div>
                 </v-list-item>
                 <v-list-item
@@ -52,7 +52,7 @@
                         <v-list-item-title class="text-left font-weight-medium">मृत्यु</v-list-item-title>
                     </v-list-item-content>
                     <div v-if="covidData.death">
-                        {{ covidData.death }}
+                        {{ covidData.death }} (<span style="color: red;">{{covidData.death_new > 0 ? '+' + covidData.death_new : 'अनुपलब्ध'}}</span>)
                     </div>
                 </v-list-item>
             </v-list>
