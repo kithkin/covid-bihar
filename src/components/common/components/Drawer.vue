@@ -5,7 +5,18 @@
     width="140"
     app
     >
-        <v-list dense>
+        <v-list 
+        dense
+        nav
+        >
+            <div class="text-center">
+                <v-list-item-avatar>
+                <img src="https://randomuser.me/api/portraits/men/81.jpg">
+                </v-list-item-avatar>
+            </div>
+
+            <v-divider></v-divider>
+
             <v-list-item
             v-for="item in items"
             :key="item.title"
