@@ -177,9 +177,8 @@ export default {
                 { text: 'मृत्यु (आज)', value: 'deltadeaths', class: 'blue lighten 2 white--text subtitle-2' },
             ],
             worldHeaders: [
-                { text : 'सूचीबद्ध (शीर्ष 9 संक्रमित)', value: 'rank', class: 'blue lighten 2 white--text subtitle-2'},
                 {
-                    text: 'देश',
+                    text: 'सूचीबद्ध (शीर्ष 9 संक्रमित देश)',
                     align: 'start',
                     sortable: false,
                     value: 'stateHi',

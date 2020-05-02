@@ -152,6 +152,11 @@ export default {
             res.pop()
             this.worldData = res;
         })
+
+        serviceData.getDistrictZones()
+        .then(res => {
+            console.log(res);
+        })
     },
     computed: {
         currentStateDescription: function() {
