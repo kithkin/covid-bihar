@@ -61,15 +61,14 @@
                                         <v-col sm="12" class="text-center">
                                              <div id="holder">
                                                 <div class="mapHolder">
-                                                    <us-map
-                                                        v-on:stateSelected="onStateSelected"
-                                                        v-on:stateDeselected="onStateDeselected"
-                                                    />
-                                                
                                                     <tooltip
                                                         v-if="currentState"
                                                         :title="currentState.Name"
                                                         :description="currentStateDescription"
+                                                    />
+                                                    <us-map
+                                                        v-on:stateSelected="onStateSelected"
+                                                        v-on:stateDeselected="onStateDeselected"
                                                     />
                                                 </div>
                                             </div>
