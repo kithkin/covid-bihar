@@ -3,14 +3,20 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+function lazyLoad(view, comp) {
+  return () => import('./../components/' + view + '/' + comp + '.vue')
+}
+
 export default new Router({
   mode: 'history',
+  fallback: false,
+  scrollBehavior: () => ({y: 0}),
   base: process.env.BASE_URL,
   routes: [
     {
       name: 'HomePage',
       path: '/',
-      component: () => import('@/components/homepage/HomePage'),
+      component: lazyLoad('homepage', 'HomePage'),
     },
   ],
 })
