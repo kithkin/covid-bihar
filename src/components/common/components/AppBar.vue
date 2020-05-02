@@ -1,6 +1,38 @@
 <template>
     <div>
-        <drawer :clipped="primaryDrawer.clipped" :model="primaryDrawer.model"></drawer>
+        <v-navigation-drawer
+        v-model="primaryDrawer.model"
+        :clipped="primaryDrawer.clipped"
+        width="140"
+        app
+        >
+            <v-list 
+            dense
+            nav
+            >
+                <div class="text-center">
+                    <v-list-item-avatar>
+                    <img src="./../../../assets/favicon.png">
+                    </v-list-item-avatar>
+                </div>
+
+                <v-divider></v-divider>
+
+                <v-list-item
+                v-for="item in items"
+                :key="item.title"
+                link
+                >
+                    <v-list-item-icon>
+                        <v-icon>{{ item.icon }}</v-icon>
+                    </v-list-item-icon>
+
+                    <v-list-item-content>
+                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list>
+        </v-navigation-drawer>
         <v-app-bar
         :clipped-left="primaryDrawer.clipped"
         color="blue lighten-2"
@@ -27,12 +59,12 @@
 </template>
 
 <script>
-  import Drawer from './Drawer.vue'
+//   import Drawer from './Drawer.vue'
 
   export default {
     name: 'AppBar',
     components: {
-        Drawer
+        // Drawer
     },
     data() {
         return {
@@ -40,7 +72,10 @@
                 model: false,
                 type: 'default (no property)',
                 clipped: true,
-            }
+            },
+            items: [
+                { icon: 'mdi-help-circle', title: 'About' } 
+            ]
         }
     },
   }
