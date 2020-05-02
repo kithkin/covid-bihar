@@ -51,13 +51,16 @@
                             <v-row 
                             align="center"
                             justify="center">
+                                <v-col sm="12">
+                                    <div class="text-center pink white--text py-1">source: MOHFW</div>
+                                </v-col>
                                 <v-col cols="12">
                                     <v-row>
                                         <v-col sm="4" v-for="(data,index) in covidData" :key="'data_' + data + `${index}`">
                                             <main-card :covid-data="data"></main-card>
                                         </v-col>
                                     </v-row>
-                                    <!-- <v-row>
+                                    <v-row>
                                         <v-col sm="12" class="text-center">
                                              <div id="holder">
                                                 <div class="mapHolder">
@@ -73,7 +76,7 @@
                                                 </div>
                                             </div>
                                         </v-col>
-                                    </v-row> -->
+                                    </v-row>
                                     <v-row>
                                         <v-col sm="12">
                                             <table-card :districtData="districtData" :loadingTable="loadingTable" :indiaData="indiaData" :worldData="worldData"></table-card>
@@ -100,16 +103,16 @@ import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
 import FooterCard from './../common/components/FooterCard.vue';
 // import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
-// const map = require('./../mapbuild/map').default;
-// const tooltip = require('./../mapbuild/tooltip').default;
+const map = require('./../mapbuild/map').default;
+const tooltip = require('./../mapbuild/tooltip').default;
 
 export default {
     name: 'HomePage',
     components: {
         TableCard,
         MainCard,
-        // usMap: map,
-        // tooltip: tooltip,
+        usMap: map,
+        tooltip: tooltip,
         FooterCard,
         // DailyBasisDataChart
     },
