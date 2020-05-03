@@ -16,7 +16,7 @@ Links:
 
 <script>
 
-const distMap = {
+const distMapZone = {
 "209":"Araria",
 "240":"Arwal",
 "235":"Aurangabad",
@@ -55,7 +55,7 @@ const distMap = {
 "208":"Supaul",
 "220":"Vaishali",
 "203":"West Champaran",
-}
+};
 
 const d3 = require('d3');
 const topojson = require('topojson');
@@ -91,7 +91,7 @@ export default {
             var zoneClass = "";
             //console.log(zoneData);
             for(var i=0;i<zoneData.length;i++){
-            if(distMap[d.properties.Dist_Code] == zoneData[i].district){
+            if(distMapZone[d.properties.Dist_Code] == zoneData[i].district){
               if(zoneData[i].zone == "Green"){
                   zoneClass = "stateG";
               }else if(zoneData[i].zone == "Orange"){
