@@ -3,7 +3,7 @@
   <div id="tooltip">
     <div id="tooltipContainer">
       <div class="title">{{title}}</div>
-      <div class="description">{{description}}</div>
+      <div class="description body-2">{{description}}</div>
     </div>
   </div>
 </div>
@@ -51,13 +51,14 @@
 }
 
 #tooltip .description {
-  color:#666;
-  font-size: 11px;
+  color: red;
+  font-size: 13px;
   text-align:center;
-  font-style:italic;
+  /* font-style:bold; */
 }
 
 #tooltip .title {
+  color:#2196f3;
   text-align: left;
   font-size: 13px;
   text-align:center;
