@@ -19,7 +19,7 @@ export default new Router({
       component: lazyLoad('homepage', 'HomePage'),
       meta: {
         title: 'Covid-Bihar | Coronavirus trending data of Bihar',
-        icon: './../../src/assets/favicon.png',
+        icon: 'https://i.ibb.co/CwZ2R5z/favicon.png',
         metaTags: [
           {
             name: 'description',
@@ -38,7 +38,7 @@ export default new Router({
       component: lazyLoad('aboutpage', 'AboutPage'),
       meta: {
         title: 'About Page | Covid Bihar | Coronavirus trending data of Bihar',
-        icon: './../../src/assets/favicon.png',
+        icon: 'https://i.ibb.co/CwZ2R5z/favicon.png',
         metaTags: [
           {
             name: 'description',

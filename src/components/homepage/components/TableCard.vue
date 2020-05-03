@@ -5,6 +5,7 @@
             v-model="tab"
             >
                 <v-tab
+                    class="font-weight-medium"
                     v-for="item in items"
                     :key="item.tab"
                 >
