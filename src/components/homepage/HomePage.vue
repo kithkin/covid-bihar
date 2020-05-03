@@ -159,7 +159,7 @@ export default {
     },
     computed: {
         currentStateDescription: function() {
-        return "Total Cases: " + this.currentState.totalT;
+        return "कुल संक्रमित: " + this.currentState.totalT;
         }
     },
     methods: {
