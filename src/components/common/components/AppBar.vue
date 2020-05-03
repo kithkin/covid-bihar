@@ -17,12 +17,13 @@
                 </div>
 
                 <v-divider></v-divider>
-
+                <router-link to="/covid-bihar/about" style="text-decoration: none;">
                 <v-list-item
                 v-for="item in items"
                 :key="item.title"
                 link
                 >
+                    
                     <v-list-item-icon>
                         <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-icon>
@@ -30,7 +31,10 @@
                     <v-list-item-content>
                         <v-list-item-title>{{ item.title }}</v-list-item-title>
                     </v-list-item-content>
+                   
+
                 </v-list-item>
+                </router-link>
             </v-list>
         </v-navigation-drawer>
         <v-app-bar
@@ -43,8 +47,8 @@
             @click.stop="primaryDrawer.model = !primaryDrawer.model"
             class="ml-1"
             />
-            <div class="pt-4">
-                <v-img :src="require('@/assets/logo.png')" height="60" width= "190"/>
+            <div class="pt-2">
+                <v-img :src="require('@/assets/logoHi.png')" height="50" width= "190"/>
             </div>  
             <v-spacer />
             <v-switch
@@ -52,7 +56,7 @@
             class="mt-5"
             />
             <span>
-                Dark
+                डार्क मोड
             </span>
         </v-app-bar>
     </div>
@@ -74,7 +78,7 @@
                 clipped: true,
             },
             items: [
-                { icon: 'mdi-help-circle', title: 'About' } 
+                { icon: 'mdi-help-circle', title: 'हमारे बारे में' } 
             ]
         }
     },
