@@ -51,7 +51,7 @@
             />
             <div class="pt-2">
                 <router-link to="/covid-bihar">
-                <v-img :src="require('@/assets/logoHi.png')" height="136" width= "136"/>
+                <v-img :src="require('@/assets/logoHi.png')" height="134" width= "170"/>
                 </router-link>
             </div>  
             <v-spacer />
@@ -84,6 +84,7 @@
             items: [
                 { icon: 'mdi-home-circle', iconClass: 'pl-4', title: 'मुख्य पृष्ठ', link: '/covid-bihar', textClass: 'font-weight-bold pl-1' },
                 { icon: 'mdi-help-circle', iconClass: 'pl-4', title: 'हमारे बारे में', link: '/covid-bihar/about', textClass: 'font-weight-bold' },
+                { icon: 'mdi-help-circle', iconClass: 'pl-4', title: 'हमारे बारे में', link: '/covid-bihar/about', textClass: 'font-weight-bold' },{ icon: 'mdi-help-circle', iconClass: 'pl-4', title: 'हमारे बारे में', link: '/covid-bihar/about', textClass: 'font-weight-bold' },{ icon: 'mdi-help-circle', iconClass: 'pl-4', title: 'हमारे बारे में', link: '/covid-bihar/about', textClass: 'font-weight-bold' },{ icon: 'mdi-help-circle', iconClass: 'pl-4', title: 'हमारे बारे में', link: '/covid-bihar/about', textClass: 'font-weight-bold' },{ icon: 'mdi-help-circle', iconClass: 'pl-4', title: 'हमारे बारे में', link: '/covid-bihar/about', textClass: 'font-weight-bold' },{ icon: 'mdi-help-circle', iconClass: 'pl-4', title: 'हमारे बारे में', link: '/covid-bihar/about', textClass: 'font-weight-bold' },{ icon: 'mdi-help-circle', iconClass: 'pl-4', title: 'हमारे बारे में', link: '/covid-bihar/about', textClass: 'font-weight-bold' },{ icon: 'mdi-help-circle', iconClass: 'pl-4', title: 'हमारे बारे में', link: '/covid-bihar/about', textClass: 'font-weight-bold' },{ icon: 'mdi-help-circle', iconClass: 'pl-4', title: 'हमारे बारे में', link: '/covid-bihar/about', textClass: 'font-weight-bold' },{ icon: 'mdi-help-circle', iconClass: 'pl-4', title: 'हमारे बारे में', link: '/covid-bihar/about', textClass: 'font-weight-bold' },{ icon: 'mdi-help-circle', iconClass: 'pl-4', title: 'हमारे बारे में', link: '/covid-bihar/about', textClass: 'font-weight-bold' },
             ]
         }
     },
