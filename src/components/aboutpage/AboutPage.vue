@@ -21,9 +21,18 @@
             >
                 <v-icon>keyboard_arrow_up</v-icon>
             </v-btn>
-            <div>
-                <about-card :aboutQA="aboutQA" />
-            </div>
+            <v-content>
+                <v-container
+                >
+                    <v-row 
+                    align="center"
+                    justify="center">
+                        <v-col sm="12">
+                            <about-card :aboutQA="aboutQA" />
+                        </v-col>
+                    </v-row>
+                </v-container>
+            </v-content>
             <footer-card />
         </v-app>
     </div>

@@ -1,19 +1,28 @@
 <template>
-    <v-content>
-        <v-container class="fill-height">
-            <v-card class="mx-auto mb-3 mt-8" raised v-for="(data, dIndex) in aboutQA" :key="dIndex">
-                <v-list-item three-line>
-                    <v-list-item-content>
-                        <!-- <div class="overline mb-4">OVERLINE</div> -->
-                        <v-list-item-title class="headline mb-1">{{data.question}}</v-list-item-title>
-                        <v-list-item-subtitle>{{data.ans}}</v-list-item-subtitle>
-                    </v-list-item-content>
+    <div>
+        <v-card
+            class="mt-4 mx-auto"
+            max-width="900"
+            v-for="(data, dIndex) in aboutQA" :key="dIndex"
+        >
+            <v-sheet
+            class=""
+            color="cyan" 
+            >
+                <v-card class="mx-auto blue lighten-2" raised>
+                    <v-list-item>
+                        <v-list-item-content>
+                            <v-list-item-title class="title">{{data.question}}</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-card>
+            </v-sheet>
 
-                    <!-- <v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar> -->
-                </v-list-item>
-            </v-card>
-        </v-container>
-    </v-content>
+            <v-card-text>
+                <div class="subtitle-2 font-weight-light grey--text">{{data.ans}}</div>
+            </v-card-text>
+        </v-card>  
+    </div>
 </template>
 
 <script>

@@ -48,7 +48,7 @@
             class="ml-1"
             />
             <div class="pt-2">
-                <v-img :src="require('@/assets/logoHi.png')" height="50" width= "190"/>
+                <v-img :src="require('@/assets/logoHi.png')" height="136" width= "136"/>
             </div>  
             <v-spacer />
             <v-switch
