@@ -44,7 +44,7 @@
                                         <div class="mapHolder">
                                             <tooltip
                                                 v-if="currentState"
-                                                :title="currentState.district"
+                                                :title="currentState.districtHi"
                                                 :description="currentStateDescription"
                                             />
                                             <us-map

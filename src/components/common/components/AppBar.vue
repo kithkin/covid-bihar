@@ -3,7 +3,7 @@
         <v-navigation-drawer
         v-model="primaryDrawer.model"
         :clipped="primaryDrawer.clipped"
-        width="80"
+        width="90"
         app
         >
             <v-list 
@@ -25,7 +25,7 @@
                 >
                     <router-link :to="item.link" style="text-decoration: none;">
                     
-                    <v-list-item-icon>
+                    <v-list-item-icon class="pl-4">
                         <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-icon>
 
