@@ -255,7 +255,7 @@
             "Country": "India",
             "State_Name": "Bihar",
             "State_Code": "10",
-            "Dist_Name": "Kaimur (Bhabua)",
+            "Dist_Name": "Kaimur Bhabua",
             "Dist_Code": "233"
           },
           "arcs": [
@@ -1045,7 +1045,7 @@
             "Country": "India",
             "State_Name": "Bihar",
             "State_Code": "10",
-            "Dist_Name": "Pashchim Champaran",
+            "Dist_Name": "West Champaran",
             "Dist_Code": "203"
           },
           "arcs": [
@@ -1169,7 +1169,7 @@
             "Country": "India",
             "State_Name": "Bihar",
             "State_Code": "10",
-            "Dist_Name": "Purba Champaran",
+            "Dist_Name": "East Champaran",
             "Dist_Code": "204"
           },
           "arcs": [

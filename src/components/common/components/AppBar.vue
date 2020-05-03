@@ -52,7 +52,7 @@
             />
             <div class="pt-2">
                 <router-link to="/covid-bihar">
-                <v-img :src="require('@/assets/logoHi.png')" height="50" width= "190"/>
+                <v-img :src="require('@/assets/logoHi.png')" height="136" width= "136"/>
                 </router-link>
             </div>  
             <v-spacer />
