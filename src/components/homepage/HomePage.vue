@@ -77,12 +77,12 @@
 </template>
 
 <script>
-import AppBar from './../common/components/AppBar.vue';
+import AppBar from './../commonpage/components/AppBar.vue';
 // import Drawer from './../common/components/Drawer.vue';
 import MainCard from './components/MainCard.vue';
 import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
-import FooterCard from './../common/components/FooterCard.vue';
+import FooterCard from './../commonpage/components/FooterCard.vue';
 // import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
 const map = require('./../mapbuild/map').default;
 const tooltip = require('./../mapbuild/tooltip').default;
