@@ -44,7 +44,7 @@
                                         <div class="mapHolder">
                                             <tooltip
                                                 v-if="currentState"
-                                                :title="currentState.Name"
+                                                :title="currentState.district"
                                                 :description="currentStateDescription"
                                             />
                                             <us-map
@@ -133,6 +133,11 @@ export default {
         .then(res => {
             this.districtData = res.tableData;
             this.loadingTable = res.loading;
+            this.statesData = {};
+
+            for(var i=0;i<this.districtData.length;i++){
+                this.statesData[this.districtData[i].district] = this.districtData[i];
+            }
         })
 
         serviceData.getIndiaData()
@@ -154,12 +159,12 @@ export default {
     },
     computed: {
         currentStateDescription: function() {
-        return "District: " + this.currentState;
+        return "Total Cases: " + this.currentState.totalT;
         }
     },
     methods: {
         onStateSelected: function(stateCode) {
-        this.currentState = stateCode;
+        this.currentState = this.statesData[stateCode];
         },
         onStateDeselected: function(stateCode) {
         this.currentState = stateCode;
@@ -175,6 +180,7 @@ export default {
         }
     }
 }
+
 </script>
 
 <style scoped>
