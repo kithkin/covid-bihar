@@ -10,7 +10,7 @@
             dense
             nav
             >
-                <div class="text-center">
+                <div class="pl-3">
                     <v-list-item-avatar>
                     <img src="./../../../assets/favicon.png">
                     </v-list-item-avatar>
@@ -25,12 +25,12 @@
                 >
                     <router-link :to="item.link" style="text-decoration: none;">
                     
-                    <v-list-item-icon class="pl-4">
+                    <v-list-item-icon :class="item.iconClass">
                         <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-icon>
 
                     <v-list-item-content>
-                        <v-list-item-title class="font-weight-bold">{{ item.title }}</v-list-item-title>
+                        <v-list-item-title :class="item.textClass">{{ item.title }}</v-list-item-title>
                     </v-list-item-content>
 
                     </router-link>
@@ -83,8 +83,8 @@
                 clipped: true,
             },
             items: [
-                { icon: 'mdi-home-circle', title: 'मुख्य पृष्ठ', link: '/covid-bihar' },
-                { icon: 'mdi-help-circle', title: 'हमारे बारे में', link: '/covid-bihar/about' },
+                { icon: 'mdi-home-circle', iconClass: 'pl-4', title: 'मुख्य पृष्ठ', link: '/covid-bihar', textClass: 'font-weight-bold pl-1' },
+                { icon: 'mdi-help-circle', iconClass: 'pl-4', title: 'हमारे बारे में', link: '/covid-bihar/about', textClass: 'font-weight-bold' },
             ]
         }
     },
