@@ -5,9 +5,7 @@
             max-width="900"
             v-for="(data, dIndex) in aboutQA" :key="dIndex"
         >
-            <v-sheet
-            class=""
-            color="cyan" 
+            <v-sheet 
             >
                 <v-card class="mx-auto blue lighten-2" raised>
                     <v-list-item>
