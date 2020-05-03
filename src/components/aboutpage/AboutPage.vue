@@ -31,6 +31,7 @@
                             <about-card :aboutQA="aboutQA" />
                         </v-col>
                     </v-row>
+                    <contact />
                 </v-container>
             </v-content>
             <footer-card />
@@ -44,12 +45,14 @@ import serviceData from './../../services/index.js';
 import AppBar from './../common/components/AppBar.vue';
 import AboutCard from './components/AboutCard.vue';
 import FooterCard from './../common/components/FooterCard.vue';
+import Contact from './../contact/Contact.vue';
 export default {
     name: 'aboutpage',
     components: {
         AppBar,
         AboutCard,
-        FooterCard
+        FooterCard,
+        Contact
     },
     data() {
         return {
