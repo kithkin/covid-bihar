@@ -1,6 +1,8 @@
 <template>
   <v-footer
   padless
+  absolute
+  app
   >
       <v-row
       >
