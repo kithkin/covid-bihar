@@ -48,7 +48,6 @@
         >
             <v-app-bar-nav-icon
             @click.stop="primaryDrawer.model = !primaryDrawer.model"
-            class="ml-1"
             />
             <div class="pt-2">
                 <router-link to="/covid-bihar">
