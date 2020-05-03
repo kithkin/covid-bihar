@@ -51,7 +51,7 @@
 }
 
 #tooltip .description {
-  color: red;
+  color: rgb(255, 123, 0);
   font-size: 13px;
   text-align:center;
   /* font-style:bold; */
