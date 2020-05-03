@@ -3,7 +3,7 @@
         <v-navigation-drawer
         v-model="primaryDrawer.model"
         :clipped="primaryDrawer.clipped"
-        width="140"
+        width="80"
         app
         >
             <v-list 
