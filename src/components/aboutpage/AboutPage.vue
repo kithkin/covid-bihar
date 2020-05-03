@@ -53,16 +53,23 @@ export default {
     },
     data() {
         return {
-            aboutQA: []
+            aboutQA: [],
+            fab: false,
         }
     },
     methods: {
-
+        onScroll (e) {
+            if (typeof window === 'undefined') return
+            const top = window.pageYOffset ||   e.target.scrollTop || 0
+            this.fab = top > 20
+        },
+        toTop () {
+            this.$vuetify.goTo(0);
+        }
     },
     mounted() {
         serviceData.getQA()
         .then(res => {
-            console.log("Here: ",res);
             this.aboutQA = res
         })
     }
