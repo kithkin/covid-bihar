@@ -22,18 +22,16 @@
 
 #tooltipPositioner {
   position: relative;
-  left: 75%;
-  top: 100px;
+  left: 50%;
 }
 
 #tooltipContainer {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
-  width: 230px;
-  left: -125px;
+  width: 100%;
   font-size: 12px;
   line-height: 16px;
-  padding: 10px;
+  padding: 5px;
   border-radius: 3px;
   background: rgba(255,255,255,0.9);
   color: #000;
