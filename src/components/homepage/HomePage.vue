@@ -52,9 +52,18 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import MainCard from './components/MainCard.vue';
 import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
+=======
+import AppBar from './../commonpage/components/AppBar.vue';
+// import Drawer from './../common/components/Drawer.vue';
+import MainCard from './components/MainCard.vue';
+import TableCard from './components/TableCard.vue';
+import serviceData from './../../services/index.js';
+import FooterCard from './../commonpage/components/FooterCard.vue';
+>>>>>>> development
 // import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
 const map = require('./../mapbuild/map').default;
 const tooltip = require('./../mapbuild/tooltip').default;
