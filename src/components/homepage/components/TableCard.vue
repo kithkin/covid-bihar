@@ -23,6 +23,7 @@
                         :sort-by="['newC']"
                         :sort-desc="[true]"
                         :loading ="loadingTable" 
+                        mobile-breakpoint="300"
                         loading-text="प्रकिरिया में... कृपया प्रतीक्षा कीजिये!"
                         >
                             <template v-slot:item.newC="{ item }">
@@ -51,7 +52,8 @@
                         class="elevation-1 pt-2"
                         :sort-by="['deltaconfirmed']"
                         :sort-desc="[true]"
-                        :loading ="loadingTable"  
+                        :loading ="loadingTable"
+                        mobile-breakpoint="300"  
                         loading-text="प्रकिरिया में... कृपया प्रतीक्षा कीजिये!"
                         >
                             <template v-slot:item.deltaconfirmed="{ item }">
