@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import AppBar from './components/common/components/AppBar.vue';
-import FooterCard from './components/common/components/FooterCard.vue';
+import AppBar from './components/commonpage/components/AppBar.vue';
+import FooterCard from './components/commonpage/components/FooterCard.vue';
 
 export default {
   name: 'App',
