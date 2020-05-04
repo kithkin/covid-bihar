@@ -7,9 +7,17 @@
       <v-row
       >
         <v-col
-        class="blue lighten-2 py-4 text-center white--text"
+        class="blue lighten-2 text-center white--text"
         cols="12"
         >
+          <div class="py-3">
+            <v-btn
+              icon
+            >
+              <social />
+            </v-btn>
+          </div>
+          
           <strong>कोविड-बिहार</strong>
           <div class="body-1 font-weight-light pt-2 text-center">
               &copy; {{ new Date().getFullYear() }}, 
@@ -24,8 +32,13 @@
 </template>
 
 <script>
+import social from './../../socialsharing/social.vue';
+
   export default {
     name: 'FooterCard',
+    components: {
+      social
+    },
 
     data: () => ({
       
