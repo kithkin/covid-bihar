@@ -127,6 +127,11 @@ export default {
             this.covidData = res;
         })
 
+        serviceData.getDistrictDetails()
+        .then(res => {
+            console.log("Here result: ", res);
+        })
+
         // serviceData.getDistrictData()
         // .then(res => {
         //     console.log(res);
