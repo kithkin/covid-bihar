@@ -40,13 +40,17 @@
                             </v-row>
                             <v-row>
                                 <v-col sm="12" class="text-center">
-                                        <div id="holder">
-                                        <div class="mapHolder">
-                                            <tooltip
+                                        <tooltip
                                                 v-if="currentState"
                                                 :title="currentState.districtHi"
                                                 :description="currentStateDescription"
-                                            />
+                                        />
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col sm="12" class="text-center">
+                                        <div id="holder">
+                                        <div class="mapHolder">
                                             <us-map
                                                 v-on:stateSelected="onStateSelected"
                                                 v-on:stateDeselected="onStateDeselected"
