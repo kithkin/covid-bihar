@@ -35,7 +35,7 @@
                         <v-col cols="12">
                             <v-row>
                                 <v-col sm="4" v-for="(data,index) in covidData" :key="'data_' + data + `${index}`">
-                                    <main-card :covid-data="data"></main-card>
+                                    <main-card :indiaStats="indiaStats" :biharStats="biharStats" :worldStats="worldStats"></main-card>
                                 </v-col>
                             </v-row>
                             <v-row>
@@ -119,6 +119,7 @@ export default {
             loadingTable: true,
             fab: false,
             utime: '',
+            biharStats: {},
             indiaStats: {},
             worldStats: {}
         }
@@ -155,7 +156,14 @@ export default {
         serviceData.getStateData()
         .then(res => {
             this.indiaStats = res.tableData.shift();
+            res.tableData.forEach(element => {
+                if(element.statecode == "BR") {
+                    this.biharStats = element.districtData;
+                    return false;
+                }
+            });
             this.stateData = res.tableData;
+            console.log("Bihar: ", res.tableData);
             this.utime = res.tableData[13].lastupdatedtime;
         })
 

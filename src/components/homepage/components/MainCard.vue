@@ -63,15 +63,15 @@
 
 export default {
   name: 'MainCard',
-  props: ['covidData'],
+  props: ['indiaStats', 'worldStats', 'biharStats'],
   data() {
       return {
         item: 1,
+        covidData: []
       }
+  },
+  mounted() {
+      this.covidData.push()
   }
 }
 </script>
-
-<style scoped>
-
-</style>

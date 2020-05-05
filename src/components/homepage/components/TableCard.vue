@@ -1,30 +1,19 @@
 <template>
     <div>
         <v-card class="mx-auto" raised>
-            <v-tabs
-            v-model="tab"
-            >
-                <v-tab
-                    class="font-weight-medium"
-                    v-for="item in items"
-                    :key="item.tab"
-                >
+            <!-- Table Main Tab Header -->
+            <v-tabs v-model="tab">
+                <v-tab class="font-weight-medium" v-for="item in items" :key="item.tab">
                     {{ item.tab }}
                 </v-tab>
             </v-tabs>
+            <!-- Table Main Tab Header -->
 
             <v-tabs-items v-model="tab">
+                <!-- Bihar Data Table -->
                 <v-tab-item>
                     <v-card flat>
-                        <v-data-table
-                        :headers="biharHeaders"
-                        :items="districtData"
-                        class="elevation-1 pt-2"
-                        :sort-by="['active']"
-                        :sort-desc="[true]"
-                        :loading ="loadingTable" 
-                        loading-text="प्रकिरिया में... कृपया प्रतीक्षा कीजिये!"
-                        >
+                        <v-data-table :headers="biharHeaders" :items="districtData" class="elevation-1 pt-2" :sort-by="['active']" :sort-desc="[true]" :loading ="loadingTable" loading-text="प्रकिरिया में... कृपया प्रतीक्षा कीजिये!">
                             <template v-slot:item.deltaconfirmed="{ item }">
                                 <div v-if="item.deltaconfirmed > 0">
                                     <v-chip :color="getColorT(item.deltaconfirmed)">+ {{ item.deltaconfirmed }}</v-chip>
@@ -43,17 +32,12 @@
                         </v-data-table>
                     </v-card>
                 </v-tab-item>
+                <!-- Bihar Data Table -->
+
+                <!-- India Data Table -->
                 <v-tab-item>
                     <v-card flat>
-                        <v-data-table
-                        :headers="indiaHeaders"
-                        :items="stateData"
-                        class="elevation-1 pt-2"
-                        :sort-by="['active']"
-                        :sort-desc="[true]"
-                        :loading ="loadingTable"  
-                        loading-text="प्रकिरिया में... कृपया प्रतीक्षा कीजिये!"
-                        >
+                        <v-data-table :headers="indiaHeaders" :items="stateData" class="elevation-1 pt-2" :sort-by="['active']" :sort-desc="[true]" :loading ="loadingTable" loading-text="प्रकिरिया में... कृपया प्रतीक्षा कीजिये!">
                             <template v-slot:item.deltaconfirmed="{ item }">
                                 <div v-if="item.deltaconfirmed > 0">
                                     <v-chip :color="getColorT(item.deltaconfirmed)">+ {{ item.deltaconfirmed }}</v-chip>
@@ -72,17 +56,12 @@
                         </v-data-table>
                     </v-card>
                 </v-tab-item>
+                <!-- India Data Table -->
+
+                <!-- World Data Table -->
                 <v-tab-item>
                     <v-card flat>
-                        <v-data-table
-                        :headers="worldHeaders"
-                        :items="countryData"
-                        class="elevation-1 pt-2"
-                        :sort-by="['rank']"
-                        :sort-desc="[false]"
-                        :loading ="loadingTable"  
-                        loading-text="प्रकिरिया में... कृपया प्रतीक्षा कीजिये!"
-                        >
+                        <v-data-table :headers="worldHeaders" :items="countryData" class="elevation-1 pt-2" :sort-by="['rank']" :sort-desc="[false]" :loading ="loadingTable" loading-text="प्रकिरिया में... कृपया प्रतीक्षा कीजिये!">
                             <template v-slot:item.deltaconfirmed="{ item }">
                                 <div v-if="item.deltaconfirmed > 0">
                                     <v-chip :color="getColorT(item.deltaconfirmed)">+ {{ item.deltaconfirmed }}</v-chip>
@@ -101,8 +80,8 @@
                         </v-data-table>
                     </v-card>
                 </v-tab-item>
+                <!-- World Data Table -->
             </v-tabs-items>
-    
 
 
         <!-- <table class="table table-bordered table-hover table-responsive my-table">
@@ -213,10 +192,6 @@ export default {
       getColorD (deltadeaths) {
         if (deltadeaths > 0) return 'red lighten-3'
       }
-    },
-
-    mounted() {
-        // this.desserts = this.districtData;
     }
 }
 </script>

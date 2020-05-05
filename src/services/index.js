@@ -140,14 +140,14 @@ const getAllData = async() => {
 const getDistrictData = async() => {
     try {
         const resp = await axios.get('https://api.covid19india.org/v2/state_district_wise.json');
-        var result;
+        var result = [];
         resp.data.forEach(element => {
             if(element.statecode == "BR") {
                 result = element.districtData;
                 return false;
             }
         });
-        if(result) {
+        if(result.length > 0) {
             let distHi = ''
             result.forEach((distObj) => {
                 for(var key in districtHindi) {
@@ -161,10 +161,9 @@ const getDistrictData = async() => {
                 distObj.deltaconfirmed = distObj.delta.confirmed
                 distObj.districtHi = distHi;
             })
-            const tableData = result;
             const covidDataObj = { 
                 loading: false,
-                tableData: tableData
+                tableData: result
             }
             return covidDataObj;
         }
@@ -220,10 +219,9 @@ const getStateData = async() => {
                 }
                 stateObj.stateHi = stateHi;
             });
-            const tableData = statewiseData;
             const covidDataObj = { 
                 loading: false,
-                tableData: tableData
+                tableData: statewiseData
             }
             return covidDataObj;
         }
