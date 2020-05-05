@@ -91,18 +91,20 @@ const districtHindi = {
  *      {
  *          loading: boolean //Vuetify Loader
  *          tableData: [
- *              active: number,
- *              confirmed: number,
- *              deceased: number,
- *              deaths: number,
- *              recovered: number,
- *              delta: {Object},
- *              deltaconfirmed: number,
- *              deltadeaths: number,
- *              deltarecovered: number,
- *              district: 'String',
- *              districtHi: 'String',
- *              notes: 'String'
+ *              {
+ *                  active: number,
+ *                  confirmed: number,
+ *                  deceased: number,
+ *                  deaths: number,
+ *                  recovered: number,
+ *                  delta: {Object},
+ *                  deltaconfirmed: number,
+ *                  deltadeaths: number,
+ *                  deltarecovered: number,
+ *                  district: 'String',
+ *                  districtHi: 'String',
+ *                  notes: 'String'
+ *              }
  *          ],
  *          __proto__: {Object} 
  *      }    
@@ -158,19 +160,21 @@ const getDistrictData = async() => {
  *      {
  *          loading: boolean //Vuetify Loader
  *          tableData: [
- *              active: 'String',
- *              confirmed: 'String',
- *              deaths: 'String',
- *              recovered: 'String',
- *              lastupdatedtime: 'String'
- *              delta: {Object},
- *              deltaconfirmed: 'String',
- *              deltadeaths: 'String',
- *              deltarecovered: 'String',
- *              state: 'String',
- *              stateHi: 'String',
- *              stateCode: 'String'
- *              stateNotes: HTML
+ *              {
+ *                  active: 'String',
+ *                  confirmed: 'String',
+ *                  deaths: 'String',
+ *                  recovered: 'String',
+ *                  lastupdatedtime: 'String'
+ *                  delta: {Object},
+ *                  deltaconfirmed: 'String',
+ *                  deltadeaths: 'String',
+ *                  deltarecovered: 'String',
+ *                  state: 'String',
+ *                  stateHi: 'String',
+ *                  stateCode: 'String'
+ *                  stateNotes: HTML
+ *              }
  *          ],
  *          __proto__: {Object}
  *      }     
@@ -363,6 +367,28 @@ const getBiharDaily = async() => {
 
 /**
  * 
+ * @name getDistrictDaily
+ * @description get Bihar's district covid19 cases on daily basis
+ * 
+ */
+const getDistrictDaily = async() => {
+    try {
+        const resp = await axios.get('https://api.covid19india.org/districts_daily.json');
+        if(resp) {
+            console.log(resp);
+        }
+        else {
+            console.log("Covid19 India API is not working");
+        }
+    }
+    catch (error) {
+        console.error(error);    
+    }
+}
+
+
+/**
+ * 
  * @name getQA
  * @description get all the contents for about page
  * @returns {
@@ -420,5 +446,6 @@ export default {
     getStateData,
     getDistrictZones,
     getBiharDaily,
+    getDistrictDaily,
     getQA
 }
