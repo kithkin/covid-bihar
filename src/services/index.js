@@ -82,34 +82,6 @@ const districtHindi = {
     "West Champaran": "पश्चिम चम्पारण"
 }
 
-const getAllData = async() => {
-    try {
-        const resp = await axios.get('https://docs.google.com/spreadsheets/d/1gw1m2JuspwZ7a8SEijkw-M-3g377GGzXdAYKehzCpHQ/export?format=csv&id=1gw1m2JuspwZ7a8SEijkw-M-3g377GGzXdAYKehzCpHQ')
-        const toJSON = csv => {
-            const lines = csv.split('\n')
-            const result = []
-            const headers = lines[0].split(',')
-            for(var i=1;i<lines.length;i++){
-                var obj = {};
-                var currentline=lines[i].split(",");
-          
-                for(var j=0;j<headers.length;j++){
-                    obj[headers[j]] = currentline[j];
-                }
-          
-                result.push(obj);
-            }
-            return result;
-        }
-        const csv = resp.data;
-        const jsonData = toJSON(csv);
-        return jsonData
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-
 
 /**
  * 
@@ -241,16 +213,18 @@ const getStateData = async() => {
  * @description Get Top 10 COVID19 infected Country Data
  * @returns {
  *      [
- *          active: 'String',
- *          confirmed: 'String',
- *          deceased: 'String',
- *          recovered: 'String',
- *          deltaconfirmed: 'String',
- *          deltadeceased: 'String',
- *          deltarecovered: 'String',
- *          rank: 'String',
- *          state: 'String',
- *          stateHi: 'String'
+ *          {
+ *              active: 'String',
+ *              confirmed: 'String',
+ *              deceased: 'String',
+ *              recovered: 'String',
+ *              deltaconfirmed: 'String',
+ *              deltadeceased: 'String',
+ *              deltarecovered: 'String',
+ *              rank: 'String',
+ *              state: 'String',
+ *              stateHi: 'String'
+ *          }
  *      ]
  * }
  * 
@@ -290,22 +264,64 @@ const getCountryData = async() => {
 }
 
 
+/**
+ * 
+ * @name getDistrictZones
+ * @description get the details of Bihar's district covid19 color zone
+ * @returns {
+ *      [
+ *          {
+ *              district: 'String',
+ *              districtcode: 'String',
+ *              lastupdated: 'String',
+ *              source: 'String',
+ *              state: 'String',
+ *              statecode: 'String',
+ *              zone: 'String'
+ *          }
+ *      ]
+ * }
+ * 
+ */
 const getDistrictZones = async() => {
     try {
         const resp = await axios.get('https://api.covid19india.org/zones.json');
-        var result = [];
-        resp.data.zones.forEach(res => {
-            if(res.state == "Bihar") {
-                result.push(res);
-            }
-        })
-        return result
+        if(resp) {
+            var result = [];
+            resp.data.zones.forEach(res => {
+                if(res.state == "Bihar") {
+                    result.push(res);
+                    return false;
+                }
+            })
+            return result;
+        }
+        else {
+            console.log('Covid19 India API is not working')
+        }
     }
     catch (error) {
         console.error(error);    
     }
 }
 
+
+/**
+ * 
+ * @name getBiharDaily
+ * @description get Bihar's covid19 cases on daily basis
+ * @returns {
+ *      [
+ *          {
+ *              confirmed: 'String'
+ *              recovered: 'String',
+ *              deceased: 'String',
+ *              date: 'String'
+ *          }
+ *      ]
+ * }
+ * 
+ */
 const getBiharDaily = async() => {
     try {
         const resp = await axios.get('https://api.covid19india.org/states_daily.json');
@@ -313,27 +329,31 @@ const getBiharDaily = async() => {
         var count = 0;
         var obj = {};
 
-        resp.data.states_daily.forEach(res => {
+        if(resp){
+            resp.data.states_daily.forEach(res => {
 
-            count++;
-            
-            if (res['status'] == 'Confirmed') {
-                obj.confirmed = res['br'];
-            } else if (res['status'] == 'Recovered') {
-                obj.recovered = res['br'];
-            } else if (res['status'] == 'Deceased') {
-                obj.deceased = res['br'];
-            }
-
-            if (count == 3) {
-                obj.date = res.date;
-                result.push(obj);
-                count = 0;
-                obj = {};
-            }
-        })
-
-        return result;
+                count++;
+                
+                if (res['status'] == 'Confirmed') {
+                    obj.confirmed = res['br'];
+                } else if (res['status'] == 'Recovered') {
+                    obj.recovered = res['br'];
+                } else if (res['status'] == 'Deceased') {
+                    obj.deceased = res['br'];
+                }
+    
+                if (count == 3) {
+                    obj.date = res.date;
+                    result.push(obj);
+                    count = 0;
+                    obj = {};
+                }
+            })
+            return result;
+        }
+        else{
+            console.log('Covid19 India API is not working')
+        }
     }
     catch (error) {
         console.error(error);    
@@ -341,28 +361,51 @@ const getBiharDaily = async() => {
 }
 
 
+/**
+ * 
+ * @name getQA
+ * @description get all the contents for about page
+ * @returns {
+ *      [
+ *          {
+ *              ans: 'String',
+ *              qanum: 'String',
+ *              question: 'String'
+ *          },
+ *          length: number,
+ *          __proto__: Array
+ *      ]
+ * }
+ * 
+ */
 const getQA = async() => {
     try {
         const resp = await axios.get('https://docs.google.com/spreadsheets/d/1gw1m2JuspwZ7a8SEijkw-M-3g377GGzXdAYKehzCpHQ/export?format=csv&id=1gw1m2JuspwZ7a8SEijkw-M-3g377GGzXdAYKehzCpHQ&gid=939913876');
-        const toJSON = csv => {
-            const lines = csv.split('\n')
-            const result = []
-            const headers = lines[0].split(',')
-            for(var i=1;i<lines.length;i++){
-                var obj = {};
-                var currentline=lines[i].split(",");
-        
-                for(var j=0;j<headers.length;j++){
-                    obj[headers[j]] = currentline[j];
+        if(resp) {
+            const toJSON = csv => {
+                const lines = csv.split('\n')
+                const result = []
+                const headers = lines[0].split(',')
+                for(var i=1;i<lines.length;i++){
+                    var obj = {};
+                    var currentline=lines[i].split(",");
+            
+                    for(var j=0;j<headers.length;j++){
+                        obj[headers[j]] = currentline[j];
+                    }
+            
+                    result.push(obj);
                 }
-        
-                result.push(obj);
+                return result;
             }
-            return result;
+            const csv = resp.data;
+            const jsonData = toJSON(csv);
+            console.log("JSON: ", jsonData)
+            return jsonData
         }
-        const csv = resp.data;
-        const jsonData = toJSON(csv);
-        return jsonData
+        else {
+            console.log("Google spreadsheet is not working");
+        }
     }
     catch (error) {
         console.error(error);
@@ -370,8 +413,8 @@ const getQA = async() => {
     }
 }
 
+
 export default {
-    getAllData,
     getCountryData,
     getDistrictData,
     getStateData,
