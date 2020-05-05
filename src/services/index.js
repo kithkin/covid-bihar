@@ -309,7 +309,31 @@ const getDistrictZones = async() => {
 const getBiharDaily = async() => {
     try {
         const resp = await axios.get('https://api.covid19india.org/states_daily.json');
-        console.log("Here: ", resp.data)
+        var result = [];
+        var count = 0;
+        var obj = {};
+
+        resp.data.states_daily.forEach(res => {
+
+            count++;
+            
+            if (res['status'] == 'Confirmed') {
+                obj.confirmed = res['br'];
+            } else if (res['status'] == 'Recovered') {
+                obj.recovered = res['br'];
+            } else if (res['status'] == 'Deceased') {
+                obj.deceased = res['br'];
+            }
+
+            if (count == 3) {
+                obj.date = res.date;
+                result.push(obj);
+                count = 0;
+                obj = {};
+            }
+        })
+
+        return result;
     }
     catch (error) {
         console.error(error);    

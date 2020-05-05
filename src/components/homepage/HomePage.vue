@@ -136,10 +136,10 @@ export default {
             this.loadingTable = res.loading;
         })
 
-        // serviceData.getDataWorld()
-        // .then(res => {
-        //     console.log(res);
-        // })
+        serviceData.getBiharDaily()
+        .then(res => {
+            console.log(res);
+        })
 
 
         // serviceData.getBiharData()
