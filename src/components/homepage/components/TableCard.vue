@@ -64,9 +64,9 @@
                                     <v-chip :color="getColorR(item.deltarecovered)">+ {{ item.deltarecovered }}</v-chip>
                                 </div>
                             </template>
-                            <template v-slot:item.deltadeceased="{ item }">
-                                <div v-if="item.deltadeceased > 0">
-                                    <v-chip :color="getColorD(item.deltadeceased)">+ {{ item.deltadeceased }}</v-chip>
+                            <template v-slot:item.deltadeaths="{ item }">
+                                <div v-if="item.deltadeaths> 0">
+                                    <v-chip :color="getColorD(item.deltadeaths)">+ {{ item.deltadeaths }}</v-chip>
                                 </div>
                             </template>
                         </v-data-table>
@@ -95,7 +95,7 @@
                             </template>
                             <template v-slot:item.deltadeaths="{ item }">
                                 <div v-if="item.deltadeaths > 0">
-                                    <v-chip :color="getColorD(item.deltadeceased)">+ {{ item.deltadeceased }}</v-chip>
+                                    <v-chip :color="getColorD(item.deltadeaths)">+ {{ item.deltadeaths }}</v-chip>
                                 </div>
                             </template>
                         </v-data-table>
