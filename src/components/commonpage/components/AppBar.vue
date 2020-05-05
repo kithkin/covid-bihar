@@ -51,7 +51,7 @@
             />
             <div class="pt-2">
                 <router-link to="/covid-bihar">
-                <v-img :src="require('@/assets/logoHi.png')" height="134" width= "170"/>
+                <v-img :src="require('@/assets/logoHi.png')" class="logo-align" height="134" width= "170"/>
                 </router-link>
             </div>  
             <v-spacer />
@@ -89,3 +89,15 @@
     },
   }
 </script>
+
+<style>
+
+@media only screen and (max-width: 768px) {
+    .logo-align {
+        height: 55px;
+        width: 167px;
+        margin-left: 33px;
+    }
+}
+
+</style>

@@ -1,10 +1,10 @@
 <template>
     <social-sharing url="https://hamaarbihar.live/covid-bihar/"
-                    title="The Progressive JavaScript Framework"
-                    description="Intuitive, Fast and Composable MVVM for building interactive interfaces."
-                    quote="Vue is a progressive framework for building user interfaces."
+                    title="कोविद-बिहार | बिहार का कोरोनावायरस ट्रेंडिंग डेटा"
+                    description="बिहार के सभी जिले के कोरोनवायरस ट्रेंडिंग डेटा का पता लगाएं"
+                    quote="बिहार के सभी जिले के कोरोनवायरस ट्रेंडिंग डेटा का पता लगाएं"
                     hashtags="covid19,bihar"
-                    twitter-user="vuejs"
+                    twitter-user="hamaarbihar"
                     inline-template>
         <div>
             <network network="facebook" class="mx-4 blue--text">
