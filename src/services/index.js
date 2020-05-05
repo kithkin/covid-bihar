@@ -122,10 +122,11 @@ const getAllData = async() => {
  *              active: number,
  *              confirmed: number,
  *              deceased: number,
+ *              deaths: number,
  *              recovered: number,
  *              delta: {Object},
  *              deltaconfirmed: number,
- *              deltadeceased: number,
+ *              deltadeaths: number,
  *              deltarecovered: number,
  *              district: 'String',
  *              districtHi: 'String',
@@ -142,7 +143,8 @@ const getDistrictData = async() => {
         var result;
         resp.data.forEach(element => {
             if(element.statecode == "BR") {
-                result = element.districtData
+                result = element.districtData;
+                return false;
             }
         });
         if(result) {
@@ -153,7 +155,8 @@ const getDistrictData = async() => {
                         distHi = districtHindi[key];
                     }
                 }
-                distObj.deltadeceased = distObj.delta.deceased
+                distObj.deaths = distObj.deceased
+                distObj.deltadeaths = distObj.delta.deceased
                 distObj.deltarecovered = distObj.delta.recovered
                 distObj.deltaconfirmed = distObj.delta.confirmed
                 distObj.districtHi = distHi;

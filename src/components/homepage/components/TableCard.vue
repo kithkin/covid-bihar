@@ -35,9 +35,9 @@
                                     <v-chip :color="getColorR(item.deltarecovered)">+ {{ item.deltarecovered }}</v-chip>
                                 </div>
                             </template>
-                            <template v-slot:item.deltadeceased="{ item }">
-                                <div v-if="item.deltadeceased > 0">
-                                    <v-chip :color="getColorD(item.deltadeceased)">+ {{ item.deltadeceased }}</v-chip>
+                            <template v-slot:item.deltadeaths="{ item }">
+                                <div v-if="item.deltadeaths > 0">
+                                    <v-chip :color="getColorD(item.deltadeaths)">+ {{ item.deltadeaths }}</v-chip>
                                 </div>
                             </template>
                         </v-data-table>
@@ -160,8 +160,8 @@ export default {
                 { text: 'सक्रिय', value: 'active', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
                 { text: 'स्वस्थ हुए (कुल)', value: 'recovered', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
                 { text: 'स्वस्थ हुए (आज)', value: 'deltarecovered', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
-                { text: 'मृत्यु (कुल)', value: 'deceased', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
-                { text: 'मृत्यु (आज)', value: 'deltadeceased', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'मृत्यु (कुल)', value: 'deaths', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'मृत्यु (आज)', value: 'deltadeaths', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
             ],
             indiaHeaders: [
                 {
@@ -177,7 +177,7 @@ export default {
                 { text: 'स्वस्थ हुए (कुल)', value: 'recovered', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'स्वस्थ हुए (आज)', value: 'deltarecovered', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'मृत्यु (कुल)', value: 'deaths', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'मृत्यु (आज)', value: 'deltadeceased', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (आज)', value: 'deltadeaths', class: 'blue lighten 2 white--text subtitle-2' },
             ],
             worldHeaders: [
                 {
@@ -192,8 +192,8 @@ export default {
                 { text: 'सक्रिय',sortable: false, value: 'active', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'स्वस्थ हुए (कुल)',sortable: false, value: 'recovered', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'स्वस्थ हुए (आज)',sortable: false, value: 'deltarecovered', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'मृत्यु (कुल)',sortable: false, value: 'deceased', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'मृत्यु (आज)',sortable: false, value: 'deltadeceased', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (कुल)',sortable: false, value: 'deaths', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (आज)',sortable: false, value: 'deltadeaths', class: 'blue lighten 2 white--text subtitle-2' },
             ],
             tab: null,
             items: [
@@ -210,8 +210,8 @@ export default {
       getColorR (deltarecovered) {
         if (deltarecovered > 0) return 'green lighten-3';
       },
-      getColorD (deltadeceased) {
-        if (deltadeceased > 0) return 'red lighten-3'
+      getColorD (deltadeaths) {
+        if (deltadeaths > 0) return 'red lighten-3'
       }
     },
 
