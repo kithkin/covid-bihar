@@ -160,12 +160,12 @@ const getDistrictData = async() => {
  *          tableData: [
  *              active: 'String',
  *              confirmed: 'String',
- *              deceased: 'String',
+ *              deaths: 'String',
  *              recovered: 'String',
  *              lastupdatedtime: 'String'
  *              delta: {Object},
  *              deltaconfirmed: 'String',
- *              deltadeceased: 'String',
+ *              deltadeaths: 'String',
  *              deltarecovered: 'String',
  *              state: 'String',
  *              stateHi: 'String',
