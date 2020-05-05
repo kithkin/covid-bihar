@@ -61,7 +61,7 @@
                             </v-row>
                             <v-row>
                                 <v-col sm="12">
-                                    <table-card :districtData="districtData" :loadingTable="loadingTable" :indiaData="indiaData" :worldData="worldData"></table-card>
+                                    <table-card :districtData="districtData" :loadingTable="loadingTable" :stateData="stateData" :countryData="countryData"></table-card>
                                 </v-col>
                             </v-row>
                             <!-- <v-row>
@@ -114,11 +114,13 @@ export default {
             statesData: undefined,
             currentState: undefined,
             districtData: [],
-            indiaData: [],
-            worldData: [],
+            stateData: [],
+            countryData: [],
             loadingTable: true,
             fab: false,
             utime: '',
+            indiaStats: {},
+            worldStats: {}
         }
     },
     mounted() {
@@ -127,33 +129,40 @@ export default {
             this.covidData = res;
         })
 
-        // serviceData.getDistrictData()
-        // .then(res => {
-        //     console.log(res);
-        //     // this.districtData = res;
-        // })
-
-        serviceData.getBiharData()
+        serviceData.getDistrictData()
         .then(res => {
             this.districtData = res.tableData;
             this.loadingTable = res.loading;
-            this.statesData = {};
-
-            for(var i=0;i<this.districtData.length;i++){
-                this.statesData[this.districtData[i].district] = this.districtData[i];
-            }
         })
 
-        serviceData.getIndiaData()
+        // serviceData.getDataWorld()
+        // .then(res => {
+        //     console.log(res);
+        // })
+
+
+        // serviceData.getBiharData()
+        // .then(res => {
+        //     this.districtData = res.tableData;
+        //     this.loadingTable = res.loading;
+        //     this.statesData = {};
+
+        //     for(var i=0;i<this.districtData.length;i++){
+        //         this.statesData[this.districtData[i].district] = this.districtData[i];
+        //     }
+        // })
+
+        serviceData.getStateData()
         .then(res => {
-            this.indiaData = res;
-            this.utime = res[13].lastupdatedtime;
+            this.indiaStats = res.tableData.shift();
+            this.stateData = res.tableData;
+            this.utime = res.tableData[13].lastupdatedtime;
         })
 
-        serviceData.getWorldData()
+        serviceData.getCountryData()
         .then(res => {
-            res.pop()
-            this.worldData = res;
+            this.worldStats = res.shift();
+            this.countryData = res;
         })
 
         serviceData.getDistrictZones()

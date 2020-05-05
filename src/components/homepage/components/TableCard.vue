@@ -20,24 +20,24 @@
                         :headers="biharHeaders"
                         :items="districtData"
                         class="elevation-1 pt-2"
-                        :sort-by="['newC']"
+                        :sort-by="['active']"
                         :sort-desc="[true]"
                         :loading ="loadingTable" 
                         loading-text="प्रकिरिया में... कृपया प्रतीक्षा कीजिये!"
                         >
-                            <template v-slot:item.newC="{ item }">
-                                <div v-if="item.newC > 0">
-                                    <v-chip :color="getColorT(item.newC)">+ {{ item.newC }}</v-chip>
+                            <template v-slot:item.deltaconfirmed="{ item }">
+                                <div v-if="item.deltaconfirmed > 0">
+                                    <v-chip :color="getColorT(item.deltaconfirmed)">+ {{ item.deltaconfirmed }}</v-chip>
                                 </div>
                             </template>
-                            <template v-slot:item.newR="{ item }">
-                                <div v-if="item.newR > 0">
-                                    <v-chip :color="getColorR(item.newR)">+ {{ item.newR }}</v-chip>
+                            <template v-slot:item.deltarecovered="{ item }">
+                                <div v-if="item.deltarecovered> 0">
+                                    <v-chip :color="getColorR(item.deltarecovered)">+ {{ item.deltarecovered }}</v-chip>
                                 </div>
                             </template>
-                            <template v-slot:item.newD="{ item }">
-                                <div v-if="item.newD > 0">
-                                    <v-chip :color="getColorD(item.newD)">+ {{ item.newD }}</v-chip>
+                            <template v-slot:item.deltadeceased="{ item }">
+                                <div v-if="item.deltadeceased > 0">
+                                    <v-chip :color="getColorD(item.deltadeceased)">+ {{ item.deltadeceased }}</v-chip>
                                 </div>
                             </template>
                         </v-data-table>
@@ -47,9 +47,9 @@
                     <v-card flat>
                         <v-data-table
                         :headers="indiaHeaders"
-                        :items="indiaData"
+                        :items="stateData"
                         class="elevation-1 pt-2"
-                        :sort-by="['deltaconfirmed']"
+                        :sort-by="['active']"
                         :sort-desc="[true]"
                         :loading ="loadingTable"  
                         loading-text="प्रकिरिया में... कृपया प्रतीक्षा कीजिये!"
@@ -64,9 +64,9 @@
                                     <v-chip :color="getColorR(item.deltarecovered)">+ {{ item.deltarecovered }}</v-chip>
                                 </div>
                             </template>
-                            <template v-slot:item.deltadeaths="{ item }">
-                                <div v-if="item.deltadeaths > 0">
-                                    <v-chip :color="getColorD(item.deltadeaths)">+ {{ item.deltadeaths }}</v-chip>
+                            <template v-slot:item.deltadeceased="{ item }">
+                                <div v-if="item.deltadeceased > 0">
+                                    <v-chip :color="getColorD(item.deltadeceased)">+ {{ item.deltadeceased }}</v-chip>
                                 </div>
                             </template>
                         </v-data-table>
@@ -76,7 +76,7 @@
                     <v-card flat>
                         <v-data-table
                         :headers="worldHeaders"
-                        :items="worldData"
+                        :items="countryData"
                         class="elevation-1 pt-2"
                         :sort-by="['rank']"
                         :sort-desc="[false]"
@@ -95,7 +95,7 @@
                             </template>
                             <template v-slot:item.deltadeaths="{ item }">
                                 <div v-if="item.deltadeaths > 0">
-                                    <v-chip :color="getColorD(item.deltadeaths)">+ {{ item.deltadeaths }}</v-chip>
+                                    <v-chip :color="getColorD(item.deltadeceased)">+ {{ item.deltadeceased }}</v-chip>
                                 </div>
                             </template>
                         </v-data-table>
@@ -131,6 +131,8 @@
                 </tr>                                                
             </tbody>
         </table> -->
+
+
         </v-card>
     </div>
 </template>
@@ -139,7 +141,7 @@
 
 export default {
     name: 'tablecard',
-    props: ['districtData', 'loadingTable', 'indiaData', 'worldData'],
+    props: ['districtData', 'loadingTable', 'stateData', 'countryData'],
     component: {
 
     },
@@ -153,13 +155,13 @@ export default {
                     value: 'districtHi',
                     class: 'blue lighten 2 white--text subtitle-2'
                 },
-                { text: 'संक्रमित (कुल)', value: 'totalT', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
-                { text: 'संक्रमित (आज)', value: 'newC', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'संक्रमित (कुल)', value: 'confirmed', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'संक्रमित (आज)', value: 'deltaconfirmed', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
                 { text: 'सक्रिय', value: 'active', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
-                { text: 'स्वस्थ हुए (कुल)', value: 'totalR', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
-                { text: 'स्वस्थ हुए (आज)', value: 'newR', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
-                { text: 'मृत्यु (कुल)', value: 'totalD', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
-                { text: 'मृत्यु (आज)', value: 'newD', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'स्वस्थ हुए (कुल)', value: 'recovered', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'स्वस्थ हुए (आज)', value: 'deltarecovered', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'मृत्यु (कुल)', value: 'deceased', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
+                { text: 'मृत्यु (आज)', value: 'deltadeceased', class: 'blue lighten 2 white--text subtitle-2', align: 'center' },
             ],
             indiaHeaders: [
                 {
@@ -175,7 +177,7 @@ export default {
                 { text: 'स्वस्थ हुए (कुल)', value: 'recovered', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'स्वस्थ हुए (आज)', value: 'deltarecovered', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'मृत्यु (कुल)', value: 'deaths', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'मृत्यु (आज)', value: 'deltadeaths', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (आज)', value: 'deltadeceased', class: 'blue lighten 2 white--text subtitle-2' },
             ],
             worldHeaders: [
                 {
@@ -190,8 +192,8 @@ export default {
                 { text: 'सक्रिय',sortable: false, value: 'active', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'स्वस्थ हुए (कुल)',sortable: false, value: 'recovered', class: 'blue lighten 2 white--text subtitle-2' },
                 { text: 'स्वस्थ हुए (आज)',sortable: false, value: 'deltarecovered', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'मृत्यु (कुल)',sortable: false, value: 'deaths', class: 'blue lighten 2 white--text subtitle-2' },
-                { text: 'मृत्यु (आज)',sortable: false, value: 'deltadeaths', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (कुल)',sortable: false, value: 'deceased', class: 'blue lighten 2 white--text subtitle-2' },
+                { text: 'मृत्यु (आज)',sortable: false, value: 'deltadeceased', class: 'blue lighten 2 white--text subtitle-2' },
             ],
             tab: null,
             items: [
@@ -202,24 +204,15 @@ export default {
         }
     },
     methods: {
-      getColorT (newC) {
-        if (newC > 0) return 'orange lighten-3';
-      },
-      getColorR (newR) {
-        if (newR > 0) return 'green lighten-3';
-      },
-      getColorD (newD) {
-        if (newD > 0) return 'red lighten-3';
-      },
-      getColorTIW (deltaconfirmed) {
+      getColorT (deltaconfirmed) {
         if (deltaconfirmed > 0) return 'orange lighten-3';
       },
-      getColorRIW (deltarecovered) {
+      getColorR (deltarecovered) {
         if (deltarecovered > 0) return 'green lighten-3';
       },
-      getColorDIW (deltadeaths) {
-        if (deltadeaths > 0) return 'red lighten-3';
-      },
+      getColorD (deltadeceased) {
+        if (deltadeceased > 0) return 'red lighten-3'
+      }
     },
 
     mounted() {
