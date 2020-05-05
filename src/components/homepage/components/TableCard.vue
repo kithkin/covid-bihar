@@ -197,7 +197,8 @@ export default {
 </script>
 
 <style>
-    .covid-bg-red {
+
+    /* .covid-bg-red {
         background-color: #f9e4e5;
         color: #e43e33;
     }
@@ -257,6 +258,6 @@ export default {
         .my-vert-align {
             vertical-align: bottom !important;
         }
-    }
+    } */
 
 </style>
