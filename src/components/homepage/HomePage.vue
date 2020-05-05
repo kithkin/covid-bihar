@@ -125,10 +125,10 @@ export default {
         }
     },
     mounted() {
-        serviceData.getAllData()
-        .then(res => {
-            this.covidData = res;
-        })
+        // serviceData.getAllData()
+        // .then(res => {
+        //     this.covidData = res;
+        // })
 
         serviceData.getDistrictData()
         .then(res => {
@@ -158,12 +158,11 @@ export default {
             this.indiaStats = res.tableData.shift();
             res.tableData.forEach(element => {
                 if(element.statecode == "BR") {
-                    this.biharStats = element.districtData;
+                    this.biharStats = element;
                     return false;
                 }
             });
             this.stateData = res.tableData;
-            console.log("Bihar: ", res.tableData);
             this.utime = res.tableData[13].lastupdatedtime;
         })
 
@@ -178,11 +177,13 @@ export default {
             return res;
         })
     },
+
     computed: {
         currentStateDescription: function() {
-        return "कुल संक्रमित: " + this.currentState.totalT;
+            return "कुल संक्रमित: " + this.currentState.totalT;
         }
     },
+
     methods: {
         onStateSelected: function(stateCode) {
         this.currentState = this.statesData[stateCode];
