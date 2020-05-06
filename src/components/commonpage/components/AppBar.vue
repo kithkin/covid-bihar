@@ -12,7 +12,7 @@
             >
                 <div class="pl-3">
                     <v-list-item-avatar>
-                    <img src="./../../../assets/favicon.png">
+                        <img src="./../../../assets/favicon.png">
                     </v-list-item-avatar>
                 </div>
 
