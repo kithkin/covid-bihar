@@ -35,7 +35,7 @@
                         <v-col cols="12">
                             <v-row>
                                 <v-col sm="4" v-for="(data,index) in covidData" :key="'data_' + data + `${index}`">
-                                    <main-card :indiaStats="indiaStats" :biharStats="biharStats" :worldStats="worldStats"></main-card>
+                                    <main-card :covid-data="data"></main-card>
                                 </v-col>
                             </v-row>
                             <v-row>
@@ -87,6 +87,7 @@ import MainCard from './components/MainCard.vue';
 import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
 import FooterCard from './../commonpage/components/FooterCard.vue';
+// import services from './../../services/index.js';
 // import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
 const map = require('./../mapbuild/map').default;
 const tooltip = require('./../mapbuild/tooltip').default;
@@ -125,51 +126,20 @@ export default {
         }
     },
     mounted() {
-        // serviceData.getAllData()
-        // .then(res => {
-        //     this.covidData = res;
-        // })
-
-        serviceData.getDistrictData()
-        .then(res => {
-            this.districtData = res.tableData;
-            this.loadingTable = res.loading;
-        })
 
         serviceData.getBiharDaily()
         .then(res => {
             console.log(res);
         })
 
-
-        // serviceData.getBiharData()
-        // .then(res => {
-        //     this.districtData = res.tableData;
-        //     this.loadingTable = res.loading;
-        //     this.statesData = {};
-
-        //     for(var i=0;i<this.districtData.length;i++){
-        //         this.statesData[this.districtData[i].district] = this.districtData[i];
-        //     }
-        // })
-
-        serviceData.getStateData()
+        serviceData.getHomepageData()
         .then(res => {
-            this.indiaStats = res.tableData.shift();
-            res.tableData.forEach(element => {
-                if(element.statecode == "BR") {
-                    this.biharStats = element;
-                    return false;
-                }
-            });
-            this.stateData = res.tableData;
-            this.utime = res.tableData[13].lastupdatedtime;
-        })
-
-        serviceData.getCountryData()
-        .then(res => {
-            this.worldStats = res.shift();
-            this.countryData = res;
+            this.utime = res.updatedTime
+            this.covidData = res.cardData
+            this.districtData = res.biharTableData.tableData
+            this.loadingTable = res.biharTableData.loading
+            this.stateData = res.indiaTableData.tableData
+            this.countryData = res.worldTableData.tableData
         })
 
         serviceData.getDistrictZones()

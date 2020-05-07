@@ -440,6 +440,53 @@ const getQA = async() => {
 }
 
 
+/**
+ * 
+ * @name getHomepageData
+ * @description get all the data which is required for homepage
+ * @returns {
+ *      {
+ *          cardData: [Array],
+ *          updatedTime: 'String',
+ *          biharTableData: {Object},
+ *          indiaTableData: {Object},
+ *          worldTableData: {Object}
+ *      }
+ * }
+ * 
+ */
+const getHomepageData = async() => {
+    try {
+        const biharDistricts = await getDistrictData();
+        const indiaStates = await getStateData();
+        const worldCountries = await getCountryData();
+        const indiaTotalData = indiaStates.tableData.shift()
+        var biharTotalData = {}
+        var uTime = ''
+        await indiaStates.tableData.forEach(result => {
+            if(result.statecode == 'BR') {
+                biharTotalData = result;
+                uTime = result.lastupdatedtime
+                return false
+            }
+        })
+        const worldTotalData = worldCountries.shift();
+        const homePageData = {
+            updatedTime: uTime,
+            cardData : [biharTotalData, indiaTotalData, worldTotalData],
+            biharTableData: biharDistricts,
+            indiaTableData: indiaStates,
+            worldTableData: worldCountries
+        }
+        console.log("HomePageData: ", homePageData);
+        return homePageData;
+    }
+    catch(error) {
+        console.error(error);
+    }
+}
+
+
 export default {
     getCountryData,
     getDistrictData,
@@ -447,5 +494,6 @@ export default {
     getDistrictZones,
     getBiharDaily,
     getDistrictDaily,
-    getQA
+    getQA,
+    getHomepageData
 }
