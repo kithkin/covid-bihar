@@ -139,7 +139,7 @@ export default {
             this.districtData = res.biharTableData.tableData
             this.loadingTable = res.biharTableData.loading
             this.stateData = res.indiaTableData.tableData
-            this.countryData = res.worldTableData.tableData
+            this.countryData = res.worldTableData
         })
 
         serviceData.getDistrictZones()

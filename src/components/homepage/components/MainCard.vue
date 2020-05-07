@@ -22,7 +22,7 @@
                         <v-list-item-title class="text-left font-weight-medium">सक्रिय</v-list-item-title>
                     </v-list-item-content>
                     <div v-if="covidData.active">
-                        {{ covidData.active }} (<span style="color: #4599f3">{{covidData.active_new == 0 ? 'अनुपलब्ध' : covidData.active_new > 0 ? '+' + covidData.active_new : '-' + covidData.active_new}}</span>)
+                        {{ covidData.active }}
                     </div>
                 </v-list-item>
                 <v-list-item color="green">
@@ -57,17 +57,16 @@
 
 export default {
     name: 'MainCard',
-    props: ['indiaStats', 'worldStats', 'biharStats'],
+    props: ['covidData'],
 
     data() {
         return {
-        item: 1,
-        covidData: []
+        item: 1
         }
     },
 
     mounted() {
-        this.covidData.push(this.biharStats, this.indiaStats, this.worldStats)
+    
     }
 }
 </script>
