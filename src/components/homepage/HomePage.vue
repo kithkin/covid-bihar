@@ -39,11 +39,11 @@
                                 <table-card :districtData="districtData" :loadingTable="loadingTable" :stateData="stateData" :countryData="countryData"></table-card>
                             </v-col>
                         </v-row>
-                        <v-row>
+                        <!-- <v-row>
                             <v-col>
                                 <daily-basis-data-chart />
                             </v-col>
-                        </v-row>
+                        </v-row> -->
                     </v-col>
                 </v-row>
             </v-container>
@@ -55,7 +55,7 @@
 import MainCard from './components/MainCard.vue';
 import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
-import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
+// import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
 const map = require('./../mapbuild/map').default;
 const tooltip = require('./../mapbuild/tooltip').default;
 
@@ -66,7 +66,7 @@ export default {
         TableCard,
         usMap: map,
         tooltip: tooltip,
-        DailyBasisDataChart
+        // DailyBasisDataChart
     },
     data() {
         return {
