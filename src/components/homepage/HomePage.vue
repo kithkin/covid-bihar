@@ -2,12 +2,8 @@
     <div class="homepage">
         <!-- homepage content -->
         <v-content>
-            <v-container
-            class="fill-height"
-            >
-                <v-row 
-                align="center"
-                justify="center">
+            <v-container class="fill-height">
+                <v-row align="center" justify="center">
                     <v-col sm="12" class="pb-0 pt-2">
                         <div class="text-right body-2">अंतिम अपडेट: {{utime}}</div>
                     </v-col>
@@ -43,11 +39,11 @@
                                 <table-card :districtData="districtData" :loadingTable="loadingTable" :stateData="stateData" :countryData="countryData"></table-card>
                             </v-col>
                         </v-row>
-                        <!-- <v-row>
+                        <v-row>
                             <v-col>
                                 <daily-basis-data-chart />
                             </v-col>
-                        </v-row> -->
+                        </v-row>
                     </v-col>
                 </v-row>
             </v-container>
@@ -59,7 +55,7 @@
 import MainCard from './components/MainCard.vue';
 import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
-// import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
+import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
 const map = require('./../mapbuild/map').default;
 const tooltip = require('./../mapbuild/tooltip').default;
 
@@ -70,7 +66,7 @@ export default {
         TableCard,
         usMap: map,
         tooltip: tooltip,
-        // DailyBasisDataChart
+        DailyBasisDataChart
     },
     data() {
         return {
@@ -115,8 +111,10 @@ export default {
     computed: {
         currentStateDescription: function() {
             const description = {
-                active: "सक्रिय: " + this.currentState.active,
-                confirmed: "कुल संक्रमित: " + this.currentState.confirmed
+                active: "सक्रिय : " + this.currentState.active,
+                confirmed: "कुल संक्रमित : " + this.currentState.confirmed,
+                recovered: "कुल स्वस्थ : " + this.currentState.recovered,
+                deaths: "कुल मृत्यु : " + this.currentState.deaths
             }
             return description;
         }

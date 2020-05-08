@@ -4,7 +4,9 @@
     <div id="tooltipContainer">
       <div class="title">{{title}}</div>
       <div class="description body-2">{{description.confirmed}}</div>
-      <div class="description body-2 red--text">{{description.active}}</div>
+      <div class="description body-2 blue--text">{{description.active}}</div>
+      <div class="description body-2 green--text">{{description.recovered}}</div>
+      <div class="description body-2 red--text">{{description.deaths}}</div>
     </div>
   </div>
 </div>
