@@ -119,10 +119,7 @@ export default {
             countryData: [],
             loadingTable: true,
             fab: false,
-            utime: '',
-            biharStats: {},
-            indiaStats: {},
-            worldStats: {}
+            utime: ''
         }
     },
     mounted() {
@@ -140,6 +137,11 @@ export default {
             this.loadingTable = res.biharTableData.loading
             this.stateData = res.indiaTableData.tableData
             this.countryData = res.worldTableData
+            this.statesData = {};
+
+            for(var i=0;i<this.districtData.length;i++){
+                this.statesData[this.districtData[i].district] = this.districtData[i];
+            }
         })
 
         serviceData.getDistrictZones()
