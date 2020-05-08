@@ -61,7 +61,7 @@
                             </v-row>
                             <v-row>
                                 <v-col sm="12">
-                                    <table-card :districtData="districtData" :loadingTable="loadingTable" :indiaData="indiaData" :worldData="worldData"></table-card>
+                                    <table-card :districtData="districtData" :loadingTable="loadingTable" :stateData="stateData" :countryData="countryData"></table-card>
                                 </v-col>
                             </v-row>
                             <!-- <v-row>
@@ -87,6 +87,7 @@ import MainCard from './components/MainCard.vue';
 import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
 import FooterCard from './../commonpage/components/FooterCard.vue';
+// import services from './../../services/index.js';
 // import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
 const map = require('./../mapbuild/map').default;
 const tooltip = require('./../mapbuild/tooltip').default;
@@ -114,29 +115,28 @@ export default {
             statesData: undefined,
             currentState: undefined,
             districtData: [],
-            indiaData: [],
-            worldData: [],
+            stateData: [],
+            countryData: [],
             loadingTable: true,
             fab: false,
-            utime: '',
+            utime: ''
         }
     },
     mounted() {
-        serviceData.getAllData()
+
+        serviceData.getBiharDaily()
         .then(res => {
-            this.covidData = res;
+            console.log(res);
         })
 
-        // serviceData.getDistrictData()
-        // .then(res => {
-        //     console.log(res);
-        //     // this.districtData = res;
-        // })
-
-        serviceData.getBiharData()
+        serviceData.getHomepageData()
         .then(res => {
-            this.districtData = res.tableData;
-            this.loadingTable = res.loading;
+            this.utime = res.updatedTime
+            this.covidData = res.cardData
+            this.districtData = res.biharTableData.tableData
+            this.loadingTable = res.biharTableData.loading
+            this.stateData = res.indiaTableData.tableData
+            this.countryData = res.worldTableData
             this.statesData = {};
 
             for(var i=0;i<this.districtData.length;i++){
@@ -144,28 +144,18 @@ export default {
             }
         })
 
-        serviceData.getIndiaData()
-        .then(res => {
-            this.indiaData = res;
-            this.utime = res[13].lastupdatedtime;
-        })
-
-        serviceData.getWorldData()
-        .then(res => {
-            res.pop()
-            this.worldData = res;
-        })
-
         serviceData.getDistrictZones()
         .then(res => {
             return res;
         })
     },
+
     computed: {
         currentStateDescription: function() {
-        return "कुल संक्रमित: " + this.currentState.totalT;
+            return "कुल संक्रमित: " + this.currentState.totalT;
         }
     },
+
     methods: {
         onStateSelected: function(stateCode) {
         this.currentState = this.statesData[stateCode];

@@ -1,15 +1,9 @@
 <template>
     <div>
-        <v-navigation-drawer
-        v-model="primaryDrawer.model"
-        :clipped="primaryDrawer.clipped"
-        width="90"
-        app
-        >
-            <v-list 
-            dense
-            nav
-            >
+
+        <v-navigation-drawer v-model="primaryDrawer.model" :clipped="primaryDrawer.clipped" width="90" app>
+            <v-list dense nav>
+
                 <div class="pl-3">
                     <v-list-item-avatar>
                         <img src="./../../../assets/favicon.png">
@@ -18,57 +12,46 @@
 
                 <v-divider></v-divider>
                 
-                <v-list-item
-                v-for="item in items"
-                :key="item.title"
-                link
-                >
+                <v-list-item v-for="item in items" :key="item.title" link>
                     <router-link :to="item.link" style="text-decoration: none;">
-                    
+
                     <v-list-item-icon :class="item.iconClass">
                         <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-icon>
-
                     <v-list-item-content>
                         <v-list-item-title :class="item.textClass">{{ item.title }}</v-list-item-title>
                     </v-list-item-content>
 
                     </router-link>
-                   
-
                 </v-list-item>
                 
             </v-list>
         </v-navigation-drawer>
-        <v-app-bar
-        :clipped-left="primaryDrawer.clipped"
-        color="blue lighten-2"
-        dark
-        app
-        >
-            <v-app-bar-nav-icon
-            @click.stop="primaryDrawer.model = !primaryDrawer.model"
-            />
+
+        <v-app-bar :clipped-left="primaryDrawer.clipped" color="blue lighten-2" dark app>
+
+            <v-app-bar-nav-icon @click.stop="primaryDrawer.model = !primaryDrawer.model"/>
+
             <div class="pt-2">
                 <router-link to="/covid-bihar">
                 <v-img :src="require('@/assets/logoHi.png')" class="logo-align" height="134" width= "170"/>
                 </router-link>
-            </div>  
+            </div>
+
             <v-spacer />
-            <v-switch
-            v-model="$vuetify.theme.dark"
-            class="mt-5"
-            />
+
+            <v-switch v-model="$vuetify.theme.dark" class="mt-5"/>
             <span>
                 डार्क मोड
             </span>
+
         </v-app-bar>
+
     </div>
 </template>
 
 <script>
 //   import Drawer from './Drawer.vue'
-
   export default {
     name: 'AppBar',
     components: {
@@ -92,6 +75,9 @@
 
 <style>
 
+/**
+    align center logo in mobile view
+ */
 @media only screen and (max-width: 768px) {
     .logo-align {
         height: 55px;
