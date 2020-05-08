@@ -89,7 +89,6 @@ const districtHindi = {
  * @description Get all Bihar's covid19 details district wise
  * @returns {
  *      {
- *          loading: boolean //Vuetify Loader
  *          tableData: [
  *              {
  *                  active: number,
@@ -136,7 +135,6 @@ const getDistrictData = async() => {
                 distObj.districtHi = distHi;
             })
             const covidDataObj = { 
-                loading: false,
                 tableData: result
             }
             return covidDataObj;
@@ -158,7 +156,6 @@ const getDistrictData = async() => {
  * @description Get all India's covid19 details state wise
  * @returns {
  *      {
- *          loading: boolean //Vuetify Loader
  *          tableData: [
  *              {
  *                  active: 'String',
@@ -195,8 +192,7 @@ const getStateData = async() => {
                 }
                 stateObj.stateHi = stateHi;
             });
-            const covidDataObj = { 
-                loading: false,
+            const covidDataObj = {
                 tableData: statewiseData
             }
             return covidDataObj;
@@ -472,13 +468,13 @@ const getHomepageData = async() => {
         })
         const worldTotalData = worldCountries.shift();
         const homePageData = {
+            loading: false,
             updatedTime: uTime,
             cardData : [biharTotalData, indiaTotalData, worldTotalData],
             biharTableData: biharDistricts,
             indiaTableData: indiaStates,
             worldTableData: worldCountries
         }
-        console.log("HomePageData: ", homePageData);
         return homePageData;
     }
     catch(error) {

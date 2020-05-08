@@ -3,7 +3,8 @@
   <div id="tooltip">
     <div id="tooltipContainer">
       <div class="title">{{title}}</div>
-      <div class="description body-2">{{description}}</div>
+      <div class="description body-2">{{description.confirmed}}</div>
+      <div class="description body-2 red--text">{{description.active}}</div>
     </div>
   </div>
 </div>
@@ -22,7 +23,8 @@
 
 #tooltipPositioner {
   position: relative;
-  left: 50%;
+  left: 55%;
+  padding-bottom: 10px;
 }
 
 #tooltipContainer {
@@ -31,7 +33,7 @@
   width: 100%;
   font-size: 12px;
   line-height: 16px;
-  padding: 5px;
+  padding: 3px;
   border-radius: 3px;
   background: rgba(255,255,255,0.9);
   color: #000;

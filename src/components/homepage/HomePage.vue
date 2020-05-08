@@ -1,93 +1,64 @@
 <template>
     <div class="homepage">
-        <v-app id="covid">
-            <!-- drawer component -->
-            <!-- <drawer></drawer> -->
-
-            <!-- app bar component -->
-            <app-bar></app-bar>
-
-            <!-- back to top component -->
-            <v-btn
-                v-scroll="onScroll"
-                v-show="fab"
-                fab
-                dark
-                fixed
-                bottom
-                right
-                color="primary"
-                @click="toTop"
+        <!-- homepage content -->
+        <v-content>
+            <v-container
+            class="fill-height"
             >
-                <v-icon>keyboard_arrow_up</v-icon>
-            </v-btn>
-            <!-- homepage content -->
-            <v-content>
-                <v-container
-                class="fill-height"
-                >
-                    <v-row 
-                    align="center"
-                    justify="center">
-                        <v-col sm="12" class="pb-0 pt-2">
-                            <div class="text-right body-2">अंतिम अपडेट: {{utime}}</div>
-                        </v-col>
-                        <v-col cols="12">
-                            <v-row>
-                                <v-col sm="4" v-for="(data,index) in covidData" :key="'data_' + data + `${index}`">
-                                    <main-card :covid-data="data"></main-card>
-                                </v-col>
-                            </v-row>
-                            <v-row>
-                                <v-col sm="12" class="text-center">
-                                        <tooltip
-                                                v-if="currentState"
-                                                :title="currentState.districtHi"
-                                                :description="currentStateDescription"
+                <v-row 
+                align="center"
+                justify="center">
+                    <v-col sm="12" class="pb-0 pt-2">
+                        <div class="text-right body-2">अंतिम अपडेट: {{utime}}</div>
+                    </v-col>
+                    <v-col cols="12">
+                        <v-row>
+                            <v-col sm="4" v-for="(data,index) in covidData" :key="'data_' + data + `${index}`">
+                                <main-card :covid-data="data"></main-card>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col sm="12" class="text-center">
+                                    <tooltip
+                                            v-if="currentState"
+                                            :title="currentState.districtHi"
+                                            :description="currentStateDescription"
+                                    />
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col sm="12" class="text-center">
+                                    <div id="holder">
+                                    <div class="mapHolder">
+                                        <us-map
+                                            v-on:stateSelected="onStateSelected"
+                                            v-on:stateDeselected="onStateDeselected"
                                         />
-                                </v-col>
-                            </v-row>
-                            <v-row>
-                                <v-col sm="12" class="text-center">
-                                        <div id="holder">
-                                        <div class="mapHolder">
-                                            <us-map
-                                                v-on:stateSelected="onStateSelected"
-                                                v-on:stateDeselected="onStateDeselected"
-                                            />
-                                        </div>
                                     </div>
-                                </v-col>
-                            </v-row>
-                            <v-row>
-                                <v-col sm="12">
-                                    <table-card :districtData="districtData" :loadingTable="loadingTable" :stateData="stateData" :countryData="countryData"></table-card>
-                                </v-col>
-                            </v-row>
-                            <!-- <v-row>
-                                <v-col>
-                                    <daily-basis-data-chart />
-                                </v-col>
-                            </v-row> -->
-                        </v-col>
-                    </v-row>
-                </v-container>
-            </v-content>
-
-            <!-- footer component -->
-            <footer-card />
-        </v-app>
+                                </div>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col sm="12">
+                                <table-card :districtData="districtData" :loadingTable="loadingTable" :stateData="stateData" :countryData="countryData"></table-card>
+                            </v-col>
+                        </v-row>
+                        <!-- <v-row>
+                            <v-col>
+                                <daily-basis-data-chart />
+                            </v-col>
+                        </v-row> -->
+                    </v-col>
+                </v-row>
+            </v-container>
+        </v-content>
     </div>
 </template>
 
 <script>
-import AppBar from './../commonpage/components/AppBar.vue';
-// import Drawer from './../common/components/Drawer.vue';
 import MainCard from './components/MainCard.vue';
 import TableCard from './components/TableCard.vue';
 import serviceData from './../../services/index.js';
-import FooterCard from './../commonpage/components/FooterCard.vue';
-// import services from './../../services/index.js';
 // import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
 const map = require('./../mapbuild/map').default;
 const tooltip = require('./../mapbuild/tooltip').default;
@@ -95,22 +66,14 @@ const tooltip = require('./../mapbuild/tooltip').default;
 export default {
     name: 'HomePage',
     components: {
-        AppBar,
-        // Drawer,
-        TableCard,
         MainCard,
+        TableCard,
         usMap: map,
         tooltip: tooltip,
-        FooterCard,
         // DailyBasisDataChart
     },
     data() {
         return {
-            primaryDrawer: {
-                model: false,
-                type: 'default (no property)',
-                clipped: true,
-            },
             covidData: [],
             statesData: undefined,
             currentState: undefined,
@@ -118,23 +81,22 @@ export default {
             stateData: [],
             countryData: [],
             loadingTable: true,
-            fab: false,
             utime: ''
         }
     },
     mounted() {
 
-        serviceData.getBiharDaily()
-        .then(res => {
-            console.log(res);
-        })
+        // serviceData.getBiharDaily()
+        // .then(res => {
+        //     console.log(res);
+        // })
 
         serviceData.getHomepageData()
         .then(res => {
             this.utime = res.updatedTime
             this.covidData = res.cardData
             this.districtData = res.biharTableData.tableData
-            this.loadingTable = res.biharTableData.loading
+            this.loadingTable = res.loading
             this.stateData = res.indiaTableData.tableData
             this.countryData = res.worldTableData
             this.statesData = {};
@@ -152,7 +114,11 @@ export default {
 
     computed: {
         currentStateDescription: function() {
-            return "कुल संक्रमित: " + this.currentState.totalT;
+            const description = {
+                active: "सक्रिय: " + this.currentState.active,
+                confirmed: "कुल संक्रमित: " + this.currentState.confirmed
+            }
+            return description;
         }
     },
 
@@ -163,14 +129,6 @@ export default {
         onStateDeselected: function(stateCode) {
         this.currentState = stateCode;
         this.currentState = undefined;
-        },
-        onScroll (e) {
-            if (typeof window === 'undefined') return
-            const top = window.pageYOffset ||   e.target.scrollTop || 0
-            this.fab = top > 20
-        },
-        toTop () {
-            this.$vuetify.goTo(0);
         }
     }
 }

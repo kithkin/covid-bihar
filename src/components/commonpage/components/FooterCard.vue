@@ -3,6 +3,7 @@
   padless
   absolute
   app
+  inset
   >
       <v-row
       >

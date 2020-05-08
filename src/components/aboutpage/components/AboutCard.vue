@@ -10,7 +10,7 @@
                 <v-card class="mx-auto blue lighten-2" raised>
                     <v-list-item>
                         <v-list-item-content>
-                            <v-list-item-title class="title">{{data.question}}</v-list-item-title>
+                            <div class="title">{{data.question}}</div>
                         </v-list-item-content>
                     </v-list-item>
                 </v-card>
