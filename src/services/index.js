@@ -365,13 +365,24 @@ const getBiharDaily = async() => {
  * 
  * @name getDistrictDaily
  * @description get Bihar's district covid19 cases on daily basis
+ * @returns {
+ *      [
+ *          {
+ *              active: Number,
+ *              confirmed: Number,
+ *              date: 'String',
+ *              deceased: Number,
+ *              recovered: Number
+ *          }
+ *      ]
+ * }
  * 
  */
-const getDistrictDaily = async() => {
+const getDistrictDaily = async(stateName, districtName) => {
     try {
         const resp = await axios.get('https://api.covid19india.org/districts_daily.json');
         if(resp) {
-            console.log(resp);
+            return resp.data.districtsDaily[stateName][districtName]
         }
         else {
             console.log("Covid19 India API is not working");

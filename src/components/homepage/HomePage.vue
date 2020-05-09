@@ -15,11 +15,7 @@
                         </v-row>
                         <v-row>
                             <v-col sm="12" class="text-center">
-                                    <tooltip
-                                            v-if="currentState"
-                                            :title="currentState.districtHi"
-                                            :description="currentStateDescription"
-                                    />
+                                    <tooltip v-if="currentState" :title="currentState.districtHi" :description="currentStateDescription" />
                             </v-col>
                         </v-row>
                         <v-row>
@@ -106,6 +102,8 @@ export default {
         .then(res => {
             return res;
         })
+
+        serviceData.getDistrictDaily('Bihar', 'Siwan')
     },
 
     computed: {
