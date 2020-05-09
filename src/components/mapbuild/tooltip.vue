@@ -21,10 +21,6 @@
                         <td class="red--text" style="padding: 6px">{{description.deaths}}</td>
                     </tr>
                 </table>
-                <!-- <div class="description body-2">{{description.confirmed}}</div>
-                <div class="description body-2 blue--text">{{description.active}}</div>
-                <div class="description body-2 green--text">{{description.recovered}}</div>
-                <div class="description body-2 red--text">{{description.deaths}}</div>-->
             </div>
         </div>
     </div>
