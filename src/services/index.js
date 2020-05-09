@@ -57,7 +57,7 @@ const districtHindi = {
     "Gopalganj": "गोपालगंज",
     "Jamui": "जमुई",
     "Jehanabad": "जहानाबाद",
-    "Kaimur Bhabua": "कैमूर भभुआ",
+    "Kaimur": "कैमूर भभुआ",
     "Katihar": "कटिहार",
     "Khagaria": "खगड़िया",
     "Kishanganj": "किशनगंज",
