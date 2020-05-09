@@ -26,7 +26,6 @@
 #tooltipPositioner {
   position: relative;
   left: 55%;
-  padding-bottom: 10px;
 }
 
 #tooltipContainer {
@@ -64,6 +63,12 @@
   text-align: left;
   font-size: 13px;
   text-align:center;
+}
+
+@media only screen and (max-width: 768px) {
+    #tooltipPositioner {
+      padding-bottom: 15%;
+    }
 }
 
 </style>
