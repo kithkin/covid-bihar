@@ -1,5 +1,5 @@
 <template>
-<div id="tooltipPositioner">
+<div id="tooltipPositioner" class="tooltipPosition">
   <div id="tooltip">
     <div id="tooltipContainer">
       <div class="title">{{title}}</div>
@@ -66,7 +66,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-    #tooltipPositioner {
+    .tooltipPosition {
       padding-bottom: 15%;
     }
 }
