@@ -109,10 +109,10 @@ export default {
     computed: {
         currentStateDescription: function() {
             const description = {
-                active: "सक्रिय : " + this.currentState.active,
-                confirmed: "कुल संक्रमित : " + this.currentState.confirmed,
-                recovered: "कुल स्वस्थ : " + this.currentState.recovered,
-                deaths: "कुल मृत्यु : " + this.currentState.deaths
+                active: this.currentState.active,
+                confirmed: this.currentState.confirmed,
+                recovered: this.currentState.recovered,
+                deaths: this.currentState.deaths
             }
             return description;
         }

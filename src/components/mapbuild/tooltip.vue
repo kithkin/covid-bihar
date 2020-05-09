@@ -1,69 +1,89 @@
 <template>
-<div id="tooltipPositioner">
-  <div id="tooltip">
-    <div id="tooltipContainer">
-      <div class="title">{{title}}</div>
-      <div class="description body-2">{{description.confirmed}}</div>
-      <div class="description body-2 blue--text">{{description.active}}</div>
-      <div class="description body-2 green--text">{{description.recovered}}</div>
-      <div class="description body-2 red--text">{{description.deaths}}</div>
+    <div id="tooltipPositioner">
+        <div id="tooltip">
+            <div id="tooltipContainer">
+                <div class="title">{{title}}</div>
+                <table>
+                    <tr>
+                        <th class="orange--text" style="padding: 4px">कुल संक्रमित</th>
+                        <td class="orange--text" style="padding: 6px">{{description.confirmed}}</td>
+                    </tr>
+                    <tr>
+                        <th class="blue--text" style="padding: 4px">सक्रिय</th>
+                        <td class="blue--text" style="padding: 6px">{{description.active}}</td>
+                    </tr>
+                    <tr>
+                        <th class="green--text" style="padding: 4px">कुल स्वस्थ</th>
+                        <td class="green--text" style="padding: 6px">{{description.recovered}}</td>
+                    </tr>
+                    <tr>
+                        <th class="red--text" style="padding: 4px">कुल मृत्यु </th>
+                        <td class="red--text" style="padding: 6px">{{description.deaths}}</td>
+                    </tr>
+                </table>
+                <!-- <div class="description body-2">{{description.confirmed}}</div>
+                <div class="description body-2 blue--text">{{description.active}}</div>
+                <div class="description body-2 green--text">{{description.recovered}}</div>
+                <div class="description body-2 red--text">{{description.deaths}}</div>-->
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 </template>
 
 <script>
-
-  module.exports = {
-    name: 'tooltip',
-    props: ['title', 'description']
-  }
-
+module.exports = {
+    name: "tooltip",
+    props: ["title", "description"]
+};
 </script>
 
 <style scoped>
-
 #tooltipPositioner {
-  position: relative;
-  left: 55%;
-  padding-bottom: 10px;
+    position: relative;
+    left: 55%;
+    padding-bottom: 10px;
 }
 
 #tooltipContainer {
-  /* position: absolute; */
-  bottom: 0;
-  width: 100%;
-  font-size: 12px;
-  line-height: 16px;
-  padding: 3px;
-  border-radius: 3px;
-  background: rgba(255,255,255,0.9);
-  color: #000;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.4);
-  -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.4);
-  border:1px solid rgba(200,200,200,0.85);
-  text-align:center;
+    /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 3px;
+    border-radius: 3px;
+    background: #4b4f52;
+    color: #000;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(200, 200, 200, 0.85);
+    text-align: center;
 }
 
 #tooltip {
-  text-align:center;
-  z-index: 4;
-  position: absolute;
-  display: block;
+    text-align: center;
+    z-index: 4;
+    position: absolute;
+    display: block;
 }
 
 #tooltip .description {
-  color: rgb(255, 123, 0);
-  font-size: 13px;
-  text-align:center;
-  /* font-style:bold; */
+    color: rgb(255, 123, 0);
+    font-size: 13px;
+    text-align: center;
+    /* font-style:bold; */
 }
 
 #tooltip .title {
-  color:#2196f3;
-  text-align: left;
-  font-size: 13px;
-  text-align:center;
+    color: #ffffff;
+    text-align: left;
+    font-size: 13px;
+    text-align: center;
 }
 
+table,
+th,
+td {
+    border: 1px solid black;
+}
 </style>
