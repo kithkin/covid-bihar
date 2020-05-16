@@ -3,7 +3,7 @@
     class="mx-auto"
     raised
   >
-    <v-sheet class="pa-4 primary blue lighten 2">
+    <v-sheet class="pa-4 blue lighten 2">
         <v-autocomplete
         v-model="select"
         :loading="loading"
