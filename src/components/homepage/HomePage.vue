@@ -30,11 +30,6 @@
                                 </div>
                             </v-col>
                         </v-row>
-                        <v-row>
-                            <v-col sm="12">
-                                <table-card :districtData="districtData" :loadingTable="loadingTable" :stateData="stateData" :countryData="countryData"></table-card>
-                            </v-col>
-                        </v-row>
                         <!-- <v-row>
                             <v-col>
                                 <daily-basis-data-chart />
@@ -45,6 +40,13 @@
                         <v-row>
                             <v-col cols="12">
                                 <side-card></side-card>
+                            </v-col>
+                        </v-row>
+                    </v-col>
+                    <v-col cols="12">
+                        <v-row>
+                            <v-col sm="12">
+                                <table-card :districtData="districtData" :loadingTable="loadingTable" :stateData="stateData" :countryData="countryData"></table-card>
                             </v-col>
                         </v-row>
                     </v-col>
