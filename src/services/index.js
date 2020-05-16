@@ -394,6 +394,64 @@ const getDistrictDaily = async(stateName, districtName) => {
     }
 }
 
+/**
+ * 
+ * @name getDistrictDaily
+ * @description get Bihar's district covid19 cases on daily basis
+ * @returns {
+ *      [
+ *          {
+ *              active: Number,
+ *              confirmed: Number,
+ *              date: 'String',
+ *              deceased: Number,
+ *              recovered: Number
+ *          }
+ *      ]
+ * }
+ * 
+ */
+const getBlockData = async(districtName) => {
+    try {
+        const resp = await axios.get('https://docs.google.com/spreadsheets/d/1gw1m2JuspwZ7a8SEijkw-M-3g377GGzXdAYKehzCpHQ/export?format=csv&id=1gw1m2JuspwZ7a8SEijkw-M-3g377GGzXdAYKehzCpHQ&gid=1061357424');
+        if(resp) {
+            const toJSON = csv => {
+                const lines = csv.split('\n')
+                const result = []
+                const headers = lines[0].split(',')
+                for(var i=1;i<lines.length;i++){
+                    var obj = {};
+                    var currentline=lines[i].split(",");
+            
+                    for(var j=0;j<headers.length;j++){
+                        obj[headers[j]] = currentline[j];
+                    }
+            
+                    result.push(obj);
+                }
+                return result;
+            }
+            const csv = resp.data;
+            const jsonData = toJSON(csv);
+            var result = [];
+            jsonData.forEach(res => {
+                if(res.district == districtName) {
+                    result.push(res);
+                    return false;
+                }
+            })
+            console.log("JSON: ", result)
+            return result
+        }
+        else {
+            console.log("Covid19 India API is not working");
+        }
+    }
+    catch (error) {
+        console.error(error);    
+    }
+}
+
 
 /**
  * 
@@ -434,7 +492,6 @@ const getQA = async() => {
             }
             const csv = resp.data;
             const jsonData = toJSON(csv);
-            console.log("JSON: ", jsonData)
             return jsonData
         }
         else {
@@ -499,6 +556,7 @@ export default {
     getCountryData,
     getDistrictData,
     getStateData,
+    getBlockData,
     getDistrictZones,
     getBiharDaily,
     getDistrictDaily,

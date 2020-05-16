@@ -114,10 +114,10 @@ export default {
             return res;
         })
 
-        // serviceData.getDistrictDaily()
-        // .then(res => {
-        //     console.log(res);
-        // })
+        serviceData.getBlockData('Araria')
+        .then(res => {
+            console.log(res);
+        })
 
         serviceData.getDistrictDaily('Bihar', 'Siwan')
         .then(res => {
