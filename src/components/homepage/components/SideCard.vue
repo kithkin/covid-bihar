@@ -3,7 +3,7 @@
     class="mx-auto"
     raised
   >
-    <v-sheet class="pa-4 primary blue lighten 2">
+    <v-sheet class="pa-4 blue lighten 2">
         <v-autocomplete
         v-model="select"
         :loading="loading"
@@ -30,8 +30,26 @@
         v-scroll:#scroll-target="onScroll"
         align="center"
         justify="center"
-        style="height: 1000px"
       >
+      <v-col>
+            <v-list shaped>
+          <!-- <v-subheader>REPORTS</v-subheader> -->
+          <v-list-item-group v-model="item" color="primary">
+            <v-list-item
+              v-for="(item, i) in items"
+              :key="i"
+            >
+              <v-list-item-icon>
+                <v-icon v-text="item.icon"></v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title v-text="item.text"></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+           <v-subheader>BLOCK WISE DATA</v-subheader>
+        </v-list>
+      </v-col>
       </v-row>
     </v-card-text>
   </v-card>
@@ -46,7 +64,14 @@ export default {
         return {
             offsetTop: 0,
             loading: false,
-            items: [],
+            item: 1,
+            items: [
+              { text: 'संक्रमित', icon: 'mdi-clock' },
+              { text: 'सक्रिय', icon: 'mdi-account' },
+              { text: 'स्वस्थ', icon: 'mdi-flag' },
+              { text: 'मृत्यु', icon: 'mdi-flag' },
+            ],
+            // items: [],
             search: null,
             select: null,
             districts: [

@@ -349,6 +349,7 @@ const getBiharDaily = async() => {
                     obj = {};
                 }
             })
+            console.log("Bihar: ", getBiharDaily);
             return result;
         }
         else{
