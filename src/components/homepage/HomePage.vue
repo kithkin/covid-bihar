@@ -3,11 +3,11 @@
         <!-- homepage content -->
         <v-content>
             <v-container class="fill-height">
-                <v-row align="center" justify="center">
+                <v-row>
                     <v-col sm="12" class="pb-0 pt-2">
                         <div class="text-right body-2">अंतिम अपडेट: {{utime}}</div>
                     </v-col>
-                    <v-col cols="12">
+                    <v-col cols="12" sm="9" md="9">
                         <v-row>
                             <v-col sm="4" v-for="(data,index) in covidData" :key="'data_' + data + `${index}`">
                                 <main-card :covid-data="data"></main-card>
@@ -41,6 +41,13 @@
                             </v-col>
                         </v-row> -->
                     </v-col>
+                    <v-col sm="3" md="3">
+                        <v-row>
+                            <v-col cols="12">
+                                <side-card></side-card>
+                            </v-col>
+                        </v-row>
+                    </v-col>
                 </v-row>
             </v-container>
         </v-content>
@@ -54,6 +61,7 @@ import serviceData from './../../services/index.js';
 // import DailyBasisDataChart from './components/DailyBasisDataChart.vue';
 const map = require('./../mapbuild/map').default;
 const tooltip = require('./../mapbuild/tooltip').default;
+import SideCard from './components/SideCard.vue';
 
 export default {
     name: 'HomePage',
@@ -62,7 +70,8 @@ export default {
         TableCard,
         usMap: map,
         tooltip: tooltip,
-        // DailyBasisDataChart
+        // DailyBasisDataChart,
+        SideCard
     },
     data() {
         return {
