@@ -411,7 +411,7 @@ const getDistrictDaily = async(stateName, districtName) => {
  * }
  * 
  */
-const getBlockData = async(districtName) => {
+const getBlockData = async() => {
     try {
         const resp = await axios.get('https://docs.google.com/spreadsheets/d/1gw1m2JuspwZ7a8SEijkw-M-3g377GGzXdAYKehzCpHQ/export?format=csv&id=1gw1m2JuspwZ7a8SEijkw-M-3g377GGzXdAYKehzCpHQ&gid=1061357424');
         if(resp) {
@@ -433,15 +433,7 @@ const getBlockData = async(districtName) => {
             }
             const csv = resp.data;
             const jsonData = toJSON(csv);
-            var result = [];
-            jsonData.forEach(res => {
-                if(res.district == districtName) {
-                    result.push(res);
-                    return false;
-                }
-            })
-            console.log("JSON: ", result)
-            return result
+            return jsonData;
         }
         else {
             console.log("Covid19 India API is not working");

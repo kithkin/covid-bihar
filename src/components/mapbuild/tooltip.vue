@@ -5,19 +5,13 @@
                 <div class="title">{{title}}</div>
                 <table>
                     <tr>
-                        <th class="orange--text" style="padding: 4px">कुल संक्रमित</th>
-                        <td class="orange--text" style="padding: 6px">{{description.confirmed}}</td>
-                    </tr>
-                    <tr>
                         <th class="blue--text" style="padding: 4px">सक्रिय</th>
+                        <th class="green--text" style="padding: 4px">स्वस्थ</th>
+                        <th class="red--text" style="padding: 4px">मृत्यु </th>
+                    </tr>
+                    <tr>
                         <td class="blue--text" style="padding: 6px">{{description.active}}</td>
-                    </tr>
-                    <tr>
-                        <th class="green--text" style="padding: 4px">कुल स्वस्थ</th>
                         <td class="green--text" style="padding: 6px">{{description.recovered}}</td>
-                    </tr>
-                    <tr>
-                        <th class="red--text" style="padding: 4px">कुल मृत्यु </th>
                         <td class="red--text" style="padding: 6px">{{description.deaths}}</td>
                     </tr>
                 </table>

@@ -113,16 +113,23 @@ export default {
         .then(res => {
             return res;
         })
-
-        serviceData.getBlockData('Araria')
+        var districtName = 'Araria';
+        serviceData.getBlockData(districtName)
         .then(res => {
-            console.log(res);
+            var result = [];
+            res.forEach(res => {
+                if(res.district == districtName) {
+                    // /2020/.test('2020)
+                    result.push(res);
+                    return false;
+                }
+            })
+            console.log(result);
         })
 
         serviceData.getDistrictDaily('Bihar', 'Siwan')
-        .then(res => {
-            console.log(res);
-        })
+        .then(
+        )
     },
 
     computed: {
